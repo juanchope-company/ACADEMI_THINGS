@@ -1,6 +1,10 @@
 package com.controlador;
 
-import com.Modulo.*;
+import com.modulo.Usuario;
+import com.modulo.PQR;
+import com.modulo.Publicacion;
+import com.modulo.Encuesta;
+import com.modulo.Libro_interes;
 import java.util.LinkedList;
 
 /**
