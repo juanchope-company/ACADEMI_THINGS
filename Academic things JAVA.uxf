@@ -24,14 +24,14 @@
 
 
 // This text will be stored with each diagram;  use it for notes.</help_text>
-  <zoom_level>10</zoom_level>
+  <zoom_level>11</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1290</x>
-      <y>570</y>
-      <w>340</w>
-      <h>280</h>
+      <x>1430</x>
+      <y>627</y>
+      <w>374</w>
+      <h>308</h>
     </coordinates>
     <panel_attributes>Usuario
 --
@@ -58,10 +58,10 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1380</x>
-      <y>160</y>
-      <w>290</w>
-      <h>170</h>
+      <x>1408</x>
+      <y>176</y>
+      <w>440</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>Publicacion
 --
@@ -72,7 +72,7 @@ bg=green
 -votos_positivos: int
 -votos_negativos: int
 --
-+{static} getUsuarioFromBD(id: long):Usuario
++{static} selecionarPublicacion(datos: Publicacion):Publicacion
 
 
 
@@ -82,10 +82,10 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1970</x>
-      <y>510</y>
-      <w>320</w>
-      <h>150</h>
+      <x>2178</x>
+      <y>561</y>
+      <w>462</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>Comentario
 --
@@ -96,7 +96,7 @@ bg=green
 -votos_positivos: int
 -votos:negativos: int
 --
-+{static} getUsuarioFromBD(id: long): Comentario
++{static} selecionarComentario(datos: Comentario): Comentario
 
 
 </panel_attributes>
@@ -105,17 +105,17 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2030</x>
-      <y>720</y>
-      <w>380</w>
-      <h>90</h>
+      <x>2244</x>
+      <y>792</y>
+      <w>473</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Libro_interes
 --
 -id: long @
 -fecha_consulta: LocalDate
 --
-+{static} getUsuarioFromBD(id: long):Libro_interes
++{static} selecionarLibro_Interes(datos: Libro_Interes):Libro_interes
 
  </panel_attributes>
     <additional_attributes/>
@@ -123,10 +123,10 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2290</x>
-      <y>160</y>
-      <w>320</w>
-      <h>150</h>
+      <x>2530</x>
+      <y>176</y>
+      <w>352</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>Libro
 --
@@ -137,17 +137,17 @@ bg=green
 -direccion_descarga: String
 -archivo : documento_pdf
 --
-+{static} getUsuarioFromBD(id: long):Libro
++{static} selecionarLibro(datos: Libro):Libro
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>740</x>
-      <y>620</y>
-      <w>320</w>
-      <h>130</h>
+      <x>781</x>
+      <y>682</y>
+      <w>396</w>
+      <h>143</h>
     </coordinates>
     <panel_attributes>Encuesta
 --
@@ -157,17 +157,17 @@ bg=green
 -descripcion: String
 -contesta: boolean
 --
-+{static} getUsuarioFromBD(id: long):Encuesta
++{static} selecionarEncuesta(datos: Encuesta):Encuesta
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1290</x>
-      <y>960</y>
-      <w>350</w>
-      <h>150</h>
+      <x>1430</x>
+      <y>1056</y>
+      <w>385</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>PQR
 --
@@ -178,17 +178,17 @@ bg=green
 -fecha : LocalDate
 -hora : LocalTime
 --
-+{static} getUsuarioFromBD(id_solicitud: long):PQR
++{static} selecionarPQR(datos: PQR):PQR
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>680</x>
-      <y>160</y>
-      <w>320</w>
-      <h>150</h>
+      <x>671</x>
+      <y>176</y>
+      <w>440</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>Manuscrito
 --
@@ -199,32 +199,32 @@ bg=green
 -hora : LocalTime
 -archivo : byte[] [0..1]
 --
-+{static} getUsuarioFromBD(id: long): Manuscrito
++{static} selecionarManuscrito(datos: Manuscrito): Manuscrito
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1420</x>
-      <y>320</y>
-      <w>170</w>
-      <h>270</h>
+      <x>1573</x>
+      <y>330</y>
+      <w>187</w>
+      <h>319</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..*
 m2=1
 publicaciones_creadas
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;250.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;270.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1620</x>
-      <y>590</y>
-      <w>370</w>
-      <h>50</h>
+      <x>1793</x>
+      <y>649</y>
+      <w>407</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..*
@@ -236,10 +236,10 @@ los_comentarios
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1440</x>
-      <y>840</y>
-      <w>130</w>
-      <h>140</h>
+      <x>1595</x>
+      <y>924</y>
+      <w>143</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..*
@@ -251,10 +251,10 @@ solicitudes_PQR
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>670</y>
-      <w>260</w>
-      <h>50</h>
+      <x>1166</x>
+      <y>737</y>
+      <w>286</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..*
@@ -266,10 +266,10 @@ las_encuestas_creadas
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>300</y>
-      <w>570</w>
-      <h>290</h>
+      <x>913</x>
+      <y>330</y>
+      <w>627</w>
+      <h>319</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..*
@@ -281,24 +281,24 @@ Redactar
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>990</x>
-      <y>240</y>
-      <w>410</w>
-      <h>50</h>
+      <x>1100</x>
+      <y>264</y>
+      <w>330</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..*
 m2=0..1
 manuscritos_adjutos</panel_attributes>
-    <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;280.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1620</x>
-      <y>740</y>
-      <w>430</w>
-      <h>50</h>
+      <x>1793</x>
+      <y>814</y>
+      <w>473</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m2=1
@@ -310,30 +310,30 @@ libros_de_interes
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2400</x>
-      <y>300</y>
+      <x>2695</x>
+      <y>330</y>
       <w>110</w>
-      <h>490</h>
+      <h>484</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m2=0..*
 m1=1
 libro</panel_attributes>
-    <additional_attributes>70.0;10.0;70.0;460.0;10.0;460.0</additional_attributes>
+    <additional_attributes>70.0;10.0;70.0;370.0;10.0;370.0;10.0;420.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1810</x>
-      <y>210</y>
-      <w>310</w>
-      <h>70</h>
+      <x>2002</x>
+      <y>231</y>
+      <w>385</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>Etiqueta
 --
 -id_etiqueta: long @
 --
-+{static} getUsuarioFromBD(id: long): Etiqueta
++{static} selecionarEtiqueta(datos: Etiqueta): Etiqueta
 
 
 </panel_attributes>
@@ -342,10 +342,10 @@ libro</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1660</x>
-      <y>240</y>
-      <w>170</w>
-      <h>50</h>
+      <x>1837</x>
+      <y>264</y>
+      <w>187</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..*
@@ -357,10 +357,10 @@ las_etiquetas
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1790</x>
-      <y>350</y>
-      <w>480</w>
-      <h>80</h>
+      <x>1980</x>
+      <y>385</y>
+      <w>528</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>Publicacion &lt;&gt; usuario &lt;&gt; comentario
 --
@@ -373,24 +373,24 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2110</x>
-      <y>230</y>
-      <w>200</w>
-      <h>50</h>
+      <x>2376</x>
+      <y>253</y>
+      <w>176</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..*
 m2=1
 las_etiquetas</panel_attributes>
-    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>610</y>
-      <w>490</w>
-      <h>150</h>
+      <x>99</x>
+      <y>671</y>
+      <w>539</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>Pregunta
 --
@@ -398,20 +398,20 @@ las_etiquetas</panel_attributes>
 -id_encuesta: long @
 -tipo: String
 -contenido: String 
--banco_respuestas: String [..*]
--respuestas_correctas: int [0..1]
+-banco_respuestas: String [1..*]
+-respuestas_correctas: int [0..*]
 --
-+{static} getUsuarioFromBD(consecutivo: long,id_encuesta: long): Pregunta
++{static} selecionarPregunta(datos: Pregunta): Pregunta
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>140</x>
-      <y>900</y>
-      <w>440</w>
-      <h>120</h>
+      <x>165</x>
+      <y>990</y>
+      <w>451</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>Respuesta
 --
@@ -420,31 +420,31 @@ las_etiquetas</panel_attributes>
 -respuestas_cerrada : int [0..1]
 -respuestas_abierta : String [0..1]
 --
-+{static} getUsuarioFromBD(id: long, consecutivo: long): Respuesta</panel_attributes>
++{static} selecionarRespuesta(datos: Respuesta): Respuesta</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>650</y>
-      <w>200</w>
-      <h>50</h>
+      <x>627</x>
+      <y>715</y>
+      <w>176</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..*
 m2=1
 las_Preguntas
 </panel_attributes>
-    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
-      <y>750</y>
-      <w>130</w>
-      <h>170</h>
+      <x>341</x>
+      <y>825</y>
+      <w>143</w>
+      <h>187</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
@@ -455,10 +455,10 @@ las_Respuestas</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>620</y>
-      <w>260</w>
-      <h>50</h>
+      <x>1166</x>
+      <y>682</y>
+      <w>286</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..*
@@ -469,24 +469,24 @@ las_Encuestas_Contestadas</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1600</x>
-      <y>320</y>
-      <w>390</w>
-      <h>250</h>
+      <x>1771</x>
+      <y>330</y>
+      <w>429</w>
+      <h>297</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
 m2=0..*
 los_comentarios</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;220.0;370.0;220.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;240.0;370.0;240.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>910</x>
-      <y>350</y>
-      <w>450</w>
-      <h>70</h>
+      <x>1012</x>
+      <y>385</y>
+      <w>495</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>Publicacion &lt;&gt; Manuscrito &lt;&gt; usuario
 --
@@ -499,10 +499,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1800</x>
+      <x>1991</x>
       <y>0</y>
-      <w>310</w>
-      <h>100</h>
+      <w>396</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>Tematica
 --
@@ -510,7 +510,7 @@ bg=yellow</panel_attributes>
 -nombre: String
 -descripcion: String
 --
-+{static} getUsuarioFromBD(id: long): Tematica
++{static} selecionarTematica(datos: Tematica): Tematica
 
 
 </panel_attributes>
@@ -519,24 +519,24 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1950</x>
-      <y>90</y>
-      <w>110</w>
-      <h>140</h>
+      <x>2156</x>
+      <y>99</y>
+      <w>121</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
-m1=0..*
-m2=1
+m1=1
+m2=0..*
 las_tematicas</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1690</x>
-      <y>840</y>
-      <w>360</w>
-      <h>210</h>
+      <x>1870</x>
+      <y>924</y>
+      <w>396</w>
+      <h>231</h>
     </coordinates>
     <panel_attributes>-Todas las clases deben tener sus respectivos
 get y set de cada uno de sus atributos con excepsion 
@@ -549,18 +549,16 @@ tendran get y no tendra set
 respectivos constructores
 
 -.
--todas las clases deben implementar la clase 
-Consulta_MYSQL
-bg=yellow</panel_attributes>
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2170</x>
-      <y>860</y>
-      <w>460</w>
-      <h>170</h>
+      <x>2398</x>
+      <y>946</y>
+      <w>506</w>
+      <h>187</h>
     </coordinates>
     <panel_attributes>Conexion
 --
@@ -579,10 +577,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>810</x>
-      <y>970</y>
-      <w>310</w>
-      <h>280</h>
+      <x>902</x>
+      <y>1067</y>
+      <w>341</w>
+      <h>308</h>
     </coordinates>
     <panel_attributes>INTERFACE_ACADEMIC_THINGS
 --
@@ -608,10 +606,10 @@ bg=black</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1030</x>
-      <y>760</y>
-      <w>280</w>
-      <h>230</h>
+      <x>1144</x>
+      <y>836</y>
+      <w>308</w>
+      <h>253</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
@@ -622,10 +620,10 @@ usuario</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1110</x>
-      <y>990</y>
-      <w>200</w>
-      <h>50</h>
+      <x>1232</x>
+      <y>1089</y>
+      <w>220</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
@@ -636,10 +634,10 @@ las_pqrs</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>550</x>
-      <y>790</y>
-      <w>290</w>
-      <h>90</h>
+      <x>616</x>
+      <y>869</y>
+      <w>319</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>INTERFACE_ACADEMIC_THINGS
 --
@@ -653,10 +651,10 @@ bg=black</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>880</x>
-      <y>740</y>
-      <w>120</w>
-      <h>250</h>
+      <x>979</x>
+      <y>814</y>
+      <w>132</w>
+      <h>275</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
@@ -667,10 +665,10 @@ las_encuestas</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1110</x>
-      <y>800</y>
-      <w>1040</w>
-      <h>400</h>
+      <x>1232</x>
+      <y>880</y>
+      <w>1144</w>
+      <h>440</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
@@ -681,10 +679,10 @@ los_libros_de_interes</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>0</x>
-      <y>70</y>
-      <w>1590</w>
-      <h>1000</h>
+      <x>11</x>
+      <y>77</y>
+      <w>1749</w>
+      <h>1100</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
@@ -695,28 +693,28 @@ las_publicacciones</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>1460</y>
-      <w>210</w>
-      <h>100</h>
+      <x>605</x>
+      <y>1606</y>
+      <w>231</w>
+      <h>110</h>
     </coordinates>
-    <panel_attributes>Interface_Loguin
+    <panel_attributes>Interface_Sesion
 --
 -nombre_usuaro: String
 -contrasenna: String
 --
 +iniciarSesion():void
 +cerrarSesion():void
-bg=red</panel_attributes>
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>1690</y>
-      <w>210</w>
-      <h>90</h>
+      <x>605</x>
+      <y>1859</y>
+      <w>231</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Interface_Perfil
 --
@@ -730,10 +728,10 @@ bg=black</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>290</x>
-      <y>1530</y>
-      <w>230</w>
-      <h>80</h>
+      <x>330</x>
+      <y>1683</y>
+      <w>253</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>Interface_PQR
 --
@@ -747,10 +745,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>1310</y>
-      <w>210</w>
-      <h>130</h>
+      <x>605</x>
+      <y>1441</y>
+      <w>231</w>
+      <h>143</h>
     </coordinates>
     <panel_attributes>Interface_Encuesta
 --
@@ -767,10 +765,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>290</x>
-      <y>1310</y>
-      <w>230</w>
-      <h>200</h>
+      <x>330</x>
+      <y>1441</y>
+      <w>253</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>Interface_Publicacion
 --
@@ -791,10 +789,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>1580</y>
-      <w>210</w>
-      <h>90</h>
+      <x>605</x>
+      <y>1738</y>
+      <w>231</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Interface_Manuscrito
 --
@@ -808,10 +806,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>290</x>
-      <y>1630</y>
-      <w>230</w>
-      <h>150</h>
+      <x>330</x>
+      <y>1793</y>
+      <w>253</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>Interface_Libros_Interes
 --
