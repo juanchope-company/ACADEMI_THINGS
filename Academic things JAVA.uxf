@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <help_text>// Uncomment the following line to change the fontsize and font:
+// fontsize=21
+// fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Welcome to UMLet!
+//
+// Double-click on elements to add them to the diagram, or to copy them
+// Edit elements by modifying the text in this panel
+// Hold Ctrl to select multiple elements
+// Use Ctrl+mouse to select via lasso
+//
+// Use +/- or Ctrl+mouse wheel to zoom
+// Drag a whole relation at its central square icon
+//
+// Press Ctrl+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
+// Edit the files in the "palettes" directory to create your own element palettes
+//
+// Select "Custom Elements &gt; New..." to create new element types
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// This text will be stored with each diagram;  use it for notes.</help_text>
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1290</x>
+      <y>570</y>
+      <w>340</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>Usuario
+--
+-id : long @
+-nombre_completo: String
+-nombre_usuario:String
+-correo_electronico: String
+-genero: String [0..1]
+-profesion: String [0..1]
+-universidad: String 
+-descripcion_de_perfil: String
+-fecha_nacimiento: LocalDate 
+-numero_celular: String 
+-foto_perfil: byte[] [0..1]
+-contrasenna: String 
+--
++{static} selecionarUsuario(datos: Usuario):Usuario
+-parseUsuario(datos: Object[]): Usuario
++getEdad(): int
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1380</x>
+      <y>160</y>
+      <w>290</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Publicacion
+--
+-id : numero @
+-fecha: LocalDate
+-hora: LocalTime
+-contenido: String
+-votos_positivos: int
+-votos_negativos: int
+--
++{static} getUsuarioFromBD(id: long):Usuario
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1970</x>
+      <y>510</y>
+      <w>320</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Comentario
+--
+-id: long @
+-contenido_comentario: String
+-feccha: LocalDate
+-hora: LocalTime
+-votos_positivos: int
+-votos:negativos: int
+--
++{static} getUsuarioFromBD(id: long): Comentario
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2030</x>
+      <y>720</y>
+      <w>380</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Libro_interes
+--
+-id: long @
+-fecha_consulta: LocalDate
+--
++{static} getUsuarioFromBD(id: long):Libro_interes
+
+ </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2290</x>
+      <y>160</y>
+      <w>320</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Libro
+--
+-id: long @
+-nombre: String
+-autor: String
+-fecha_publicacion: LocalDate
+-direccion_descarga: String
+-archivo : documento_pdf
+--
++{static} getUsuarioFromBD(id: long):Libro
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>740</x>
+      <y>620</y>
+      <w>320</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Encuesta
+--
+-id: long @
+-titulo: String
+-fecha_realizacion: LocalDate
+-descripcion: String
+-contesta: boolean
+--
++{static} getUsuarioFromBD(id: long):Encuesta
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1290</x>
+      <y>960</y>
+      <w>350</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>PQR
+--
+-id_solicitud : long @
+-tipo : char
+-asunto : String
+-cuerpo : String
+-fecha : LocalDate
+-hora : LocalTime
+--
++{static} getUsuarioFromBD(id_solicitud: long):PQR
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>160</y>
+      <w>320</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Manuscrito
+--
+-id : long @
+-encabezado : String
+-contenido : String
+-fecha : LocalDate
+-hora : LocalTime
+-archivo : byte[] [0..1]
+--
++{static} getUsuarioFromBD(id: long): Manuscrito
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1420</x>
+      <y>320</y>
+      <w>170</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=1
+publicaciones_creadas
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;250.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1620</x>
+      <y>590</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=1
+los_comentarios
+</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1440</x>
+      <y>840</y>
+      <w>130</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=1
+solicitudes_PQR
+</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1050</x>
+      <y>670</y>
+      <w>260</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=1
+las_encuestas_creadas
+</panel_attributes>
+    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>300</y>
+      <w>570</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=1
+Redactar
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;210.0;540.0;210.0;540.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>240</y>
+      <w>410</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=0..1
+manuscritos_adjutos</panel_attributes>
+    <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1620</x>
+      <y>740</y>
+      <w>430</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m2=1
+m1=0..*
+libros_de_interes
+</panel_attributes>
+    <additional_attributes>410.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2400</x>
+      <y>300</y>
+      <w>110</w>
+      <h>490</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m2=0..*
+m1=1
+libro</panel_attributes>
+    <additional_attributes>70.0;10.0;70.0;460.0;10.0;460.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1810</x>
+      <y>210</y>
+      <w>310</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Etiqueta
+--
+-id_etiqueta: long @
+--
++{static} getUsuarioFromBD(id: long): Etiqueta
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1660</x>
+      <y>240</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=1
+las_etiquetas
+</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1790</x>
+      <y>350</y>
+      <w>480</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Publicacion &lt;&gt; usuario &lt;&gt; comentario
+--
+El usuario crea una publicación que puede ser comentada por los usuarios
+y un usuario puede comentar una o varias publicaciones
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2110</x>
+      <y>230</y>
+      <w>200</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=1
+las_etiquetas</panel_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>610</y>
+      <w>490</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Pregunta
+--
+-consecutivo: long @
+-id_encuesta: long @
+-tipo: String
+-contenido: String 
+-banco_respuestas: String [..*]
+-respuestas_correctas: int [0..1]
+--
++{static} getUsuarioFromBD(consecutivo: long,id_encuesta: long): Pregunta
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>140</x>
+      <y>900</y>
+      <w>440</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Respuesta
+--
+-id : long @
+-consecutivo_pregunta : long @
+-respuestas_cerrada : int [0..1]
+-respuestas_abierta : String [0..1]
+--
++{static} getUsuarioFromBD(id: long, consecutivo: long): Respuesta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>650</y>
+      <w>200</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=1
+las_Preguntas
+</panel_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>750</y>
+      <w>130</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..*
+las_Respuestas</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1050</x>
+      <y>620</y>
+      <w>260</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..*
+m2=1
+las_Encuestas_Contestadas</panel_attributes>
+    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1600</x>
+      <y>320</y>
+      <w>390</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..*
+los_comentarios</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;220.0;370.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>910</x>
+      <y>350</y>
+      <w>450</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Publicacion &lt;&gt; Manuscrito &lt;&gt; usuario
+--
+un usuario puede redactar uno o varios manuscritos
+y uno o varios manuscritos pueden ser adjuntados a una publicacion
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1800</x>
+      <y>0</y>
+      <w>310</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Tematica
+--
+-id: long @
+-nombre: String
+-descripcion: String
+--
++{static} getUsuarioFromBD(id: long): Tematica
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1950</x>
+      <y>90</y>
+      <w>110</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=0..*
+m2=1
+las_tematicas</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1690</x>
+      <y>840</y>
+      <w>360</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>-Todas las clases deben tener sus respectivos
+get y set de cada uno de sus atributos con excepsion 
+de los que sean pk que se señaralaran con un @
+al final para indicar que dicho atributo unicamente
+tendran get y no tendra set
+
+-.
+-tambien a cada clase se le implementaran sus 
+respectivos constructores
+
+-.
+-todas las clases deben implementar la clase 
+Consulta_MYSQL
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2170</x>
+      <y>860</y>
+      <w>460</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Conexion
+--
+-con:Connection
+-{static}{final}Nombre_BD:String
+-{static}{final}usuario:String
+-{static}{final}clave:String
+--
++crearConexion():boolean
++getConexion():Connection
++ejecutarConsulta(SentenciaSQL:String,parametros: Object...): boolean
++consultarFila(SentenciaSQL:String,parametros: Object...): Object[][]
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>810</x>
+      <y>970</y>
+      <w>310</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>INTERFACE_ACADEMIC_THINGS
+--
+
+--
+/+{abstrat} agregarUsuario(): String/
+/+{abstrat} eliminarUsuario(): String/
+/+{abstrat} modificarUsuario(): String/
+/+{abstrat} iniciarSesionUsuario(): String/
+/+{abstrat} cerrarSesionUsuario(): String/
+/+{abstrat} crearEncuesta(): String/
+/+{abstrat} contestarEncuesta(): String/
+/+{abstrat} crearPQR(): String/
+/+{abstrat} redactarManuscrito(): String/
+/+{abstrat} crearPublicacion(): String/
+/+{abstrat} EtiquetarPublicacion(): String/
+/+{abstrat} buscarLibro(): String/
+/+{abstrat} SubirLibro(): String/
+/+{abstrat} etiquetarPublicacion(): String/
+bg=black</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1030</x>
+      <y>760</y>
+      <w>280</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..1
+usuario</panel_attributes>
+    <additional_attributes>10.0;210.0;10.0;10.0;260.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1110</x>
+      <y>990</y>
+      <w>200</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..*
+las_pqrs</panel_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>550</x>
+      <y>790</y>
+      <w>290</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>INTERFACE_ACADEMIC_THINGS
+--
+en la interface se implementaran los 
+metodos adstractos necesarios para que 
+funcione la vista
+
+bg=black</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>880</x>
+      <y>740</y>
+      <w>120</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..*
+las_encuestas</panel_attributes>
+    <additional_attributes>10.0;230.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1110</x>
+      <y>800</y>
+      <w>1040</w>
+      <h>400</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..*
+los_libros_de_interes</panel_attributes>
+    <additional_attributes>10.0;370.0;1000.0;370.0;1000.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>0</x>
+      <y>70</y>
+      <w>1590</w>
+      <h>1000</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=0..*
+las_publicacciones</panel_attributes>
+    <additional_attributes>810.0;970.0;10.0;970.0;10.0;10.0;1550.0;10.0;1550.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>1460</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Interface_Loguin
+--
+-nombre_usuaro: String
+-contrasenna: String
+--
++iniciarSesion():void
++cerrarSesion():void
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>1690</y>
+      <w>210</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Interface_Perfil
+--
+-usuario: Usuario
+--
+ver_perfil:void
+modificarPerfil():void
+bg=black</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>1530</y>
+      <w>230</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Interface_PQR
+--
+usuario:Usuario
+--
++crearPQR():void
++verPQR(): void
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>1310</y>
+      <w>210</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Interface_Encuesta
+--
+usuario:Usuario
+--
++crearEncuesta():void
++agregarPregunta():void
++verEncuesta(): void
++ResponderEncuesta():void
++modificarEncuesta():void
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>1310</y>
+      <w>230</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>Interface_Publicacion
+--
+usuario: Usuario
+--
++crearPublicacion():void
++adjuntarManuscrito():void
++verPublicacion():void
++listarPublicaciones():void
++agregarComentario():void
++verComentario():void
++verComentarios():void
++agregarEtiqueta():void
++eliminarEtiqueta():void
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>1580</y>
+      <w>210</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Interface_Manuscrito
+--
+usuario: Usuario
+--
++crearManuscrito():void
++verManuscrito():void
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>1630</y>
+      <w>230</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Interface_Libros_Interes
+--
+usuario: Usuaro
+--
++agregarLibro():void
++eliminarLibro():void
++verLibro():void
++listarLibros():void
++agregarEtiqueta():void
++eliminarEtiqueta():void
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

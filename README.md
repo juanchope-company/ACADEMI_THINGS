@@ -1,1 +1,0 @@
-# ACADEMI_THINGS
