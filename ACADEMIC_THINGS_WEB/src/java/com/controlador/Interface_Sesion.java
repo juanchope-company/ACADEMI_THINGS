@@ -15,5 +15,7 @@ public abstract class Interface_Sesion {
             nombre_usuario,
             contrasenna;
     
-     public abstract void IniciarSesion();
+     public abstract void iniciarSesion();
+    
+     public abstract void cerraSesion();
 }
