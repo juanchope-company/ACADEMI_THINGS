@@ -4,6 +4,8 @@
     Author     : Desarollo
 --%>
 
+<%@page import="com.modulo.Usuario"%>
+<%@page import="com.vista.web.Sesion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -38,7 +40,65 @@
             <input name='txt_contrasenna1' type="password" placeholder="Ingrese la contraseña deseada"/>
             <label>Confirmación de contraseña: </label>
             <input name='txt_contrasenna2' type="password" placeholder="Ingrese la confirmación de la contraseña deseada"/>
-            <button type='submit'>Guardar registro</button>
+            <button name="btn_registrar" type='submit'>Guardar registro</button>
         </form>
+<%
+    Sesion sesion_actual = null;
+    
+    try {
+        sesion_actual = (Sesion) session.getAttribute("sesion");
+        if (sesion_actual == null)
+            sesion_actual = new Sesion();
+    } catch (Exception e) {
+        sesion_actual = new Sesion();
+    }
+    
+    if (request.getParameter("btn_registrar")!= null){
+        String 
+                nombre_completo = request.getParameter("txt_nom_completo"),
+                nombre_usuario = request.getParameter("txt_usuario"),
+                correo_electronico = request.getParameter("txt_correo"),
+                genero = request.getParameter("txt_genero"),
+                profesion = request.getParameter("txt_profesion"),
+                nombre_universidad = request.getParameter("txt_universidad"),
+                descripcion_perfil = request.getParameter("txt_perfil"),
+                fecha_nacimientoStr = request.getParameter("txt_fecha_nacimiento"),
+                contrasenna1 = request.getParameter("txt_contrasenna1"),
+                contrasenna2 = request.getParameter("txt_contrasenna2"),
+                numero_celular = request.getParameter("txt_num_celular");
+        
+//        byte[] foto_perfil = request.getParameter("txt_foto_perfil");
+
+        out.print(fecha_nacimientoStr);
+        if (contrasenna1.equals(contrasenna2)){
+            
+            Usuario usu = new Usuario(
+                    nombre_completo, 
+                    nombre_usuario, 
+                    correo_electronico, 
+                    genero, 
+                    profesion, 
+                    nombre_universidad, 
+                    descripcion_perfil, 
+                    numero_celular, 
+                    contrasenna1, 
+                    null, 
+                    null
+            );
+            
+            sesion_actual = new Sesion(usu);
+            
+            sesion_actual.crearUsuario();
+            
+            String res = sesion_actual.respuesta();
+            out.print("<script>alert('" + res + "');</script>");
+            
+            if (sesion_actual.esSesionValida())
+                response.sendRedirect("inicio_sesion.jsp");
+        }
+    }
+    
+    session.setAttribute("sesion", sesion_actual);
+%>
     </body>
 </html>

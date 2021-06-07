@@ -1,7 +1,6 @@
 package com.modulo;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.HashMap;
@@ -221,6 +220,13 @@ public class Usuario {
                 
         return res;
     }
-    
+
+    public static boolean agregarUsuario(Usuario usuario){
+        String sentencia = "<--Sentencia para agregar usuario-->";
+        
+        return Conexion.ejecutarConsulta(
+            sentencia
+        );              
+    }   
     
 }

@@ -63,7 +63,7 @@ public class Ejecutabe {
         usuario = Usuario.seleccionarUsuario(new Usuario(nombre_usuario, contrasenna));
         
         if(usuario != null)
-            System.out.println("#Sesion iniciada sactidfactoriamente");
+            System.out.println("#Sesion iniciada sactisfactoriamente");
         else 
             System.out.println("#Sesion no iniciada");
     }

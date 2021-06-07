@@ -19,11 +19,11 @@
         {"r_encuesta","Responder encuesta"},
         {"c_pqr","Crear PQR"},
         {"v_pqr","Ver PQRS"},
-        {"","Escribir manuscrito"},
-        {"","Ver Manuscrito"},
-        {"","crear Publicación"},
-        {"","Ver Publicación"},
-        {"","comentar Publicación"},
+        {"e_manuscrito","Escribir manuscrito"},
+        {"v_manuscrito","Ver Manuscrito"},
+        {"c_publicacion","crear Publicación"},
+        {"v_publicacion","Ver Publicación"},
+        {"com_publicacion","comentar Publicación"},
     };
 %>
     <body>
@@ -68,6 +68,21 @@
                 break;
             case "v_pqr":
                 ruta = "ver_pqr.jsp";
+                break;
+            case "e_manuscrito":
+                ruta = "escribir_manuscrito.jsp";
+                break;
+            case "v_manuscrito":
+                ruta = "verescribir_manuscrito.jsp";
+                break;
+            case "c_publicacion":
+                ruta = "crear_publicacion.jsp";
+                break;
+            case "v_publicacion":
+                ruta = "ver_publicacion.jsp";
+                break;
+            case "com_publicacion":
+                ruta = "comentar_publicacion.jsp";
                 break;
             default:
                 ruta = "";
