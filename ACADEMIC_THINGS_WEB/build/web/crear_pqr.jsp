@@ -15,5 +15,17 @@
     <body>
         <h1>Bienvenidos a crear PQR</h1>
         <p>Aquí podrá crear PQRS</p>
+        <form method="get">
+                    <label>Tipo: </label>
+                    <input class="form-control" type="text" placeholder="Nombre de usuario" name="txt_tipo">
+                    <label>Asunto: </label>
+                    <input class="form-control" type="text" placeholder="Asunto" name="txt_asunto">
+                    <label>Cuerpo </label>
+                    <input class="form-control" type ="text" placeholder="Cuerpo" name="txt_cuerpo">
+                    <button class="button" type="submit" name="btn_ingresar_pqrs">Ingresar</button>
+                                        
+                </form>
     </body>
+        
+
 </html>

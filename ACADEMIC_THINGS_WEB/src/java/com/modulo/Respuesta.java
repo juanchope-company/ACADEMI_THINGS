@@ -57,4 +57,16 @@ public class Respuesta {
         return res;
     }
     
+    public static boolean agregarRespuesta(Respuesta respuesta){
+        
+        String sentencia = "INSERT INTO RESPUESTA (consecutivo_pregunta,respuesta_cerrada,respuesta_abierta) VALUES (?,?,?)";
+        return Conexion.ejecutarConsulta(
+                sentencia,
+                respuesta.getConsecutivo_Pregunta(),
+                respuesta.getRespuesta_Cerrada(),
+                respuesta.getRespuesta_Abierta()
+        );
+        
+    }
+    
 }

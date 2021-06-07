@@ -13,5 +13,12 @@
     </head>
     <body>
         <h1>Bienvenido a ver manuscrito</h1>
+            <label>Encabezado: </label>
+            <input class="form-control" type="text" placeholder="Encabezado" name="txt_encabezado" readonly>
+            <label>Contenido: </label>
+            <input class="form-control" type="text" placeholder="Contenido" name="txt_contenido" readonly>
+            <label>Archivo: </label>
+            <input class="form-control" type="file" placeholder="Archivo" name="txt_archivo" readonly>
+            
     </body>
 </html>

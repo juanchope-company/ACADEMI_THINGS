@@ -13,5 +13,12 @@
     </head>
     <body>
         <h1>Bienvenidos a escribir manuscrito</h1>
+            <label>Encabezado: </label>
+            <input class="form-control" type="text" placeholder="Encabezado" name="txt_encabezado">
+            <label>Contenido: </label>
+            <input class="form-control" type="text" placeholder="Contenido" name="txt_contenido">
+            <label>Archivo: </label>
+            <input class="form-control" type="file" placeholder="Archivo" name="txt_archivo">
+            <button class="button" type="submit" name="btn_publicar_manuscrito">Publicar</button>
     </body>
 </html>
