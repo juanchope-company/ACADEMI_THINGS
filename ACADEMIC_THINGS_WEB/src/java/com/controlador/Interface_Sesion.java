@@ -1,8 +1,5 @@
 package com.controlador;
 
-import com.modulo.Usuario;
-import java.util.Scanner;
-
 /**
  *
  * @author Juanchope
@@ -24,4 +21,6 @@ public abstract class Interface_Sesion {
     public abstract void iniciarSesion();
     
     public abstract void cerraSesion();
+    
+    public abstract void crearUsuario();
 }

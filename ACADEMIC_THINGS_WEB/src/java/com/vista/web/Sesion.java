@@ -16,6 +16,11 @@ public class Sesion extends Interface_Sesion{
         super(null, null);
     }
     
+    public Sesion(Usuario usu){
+        super(null, null);
+        usuario = usu;
+    }
+    
     public Sesion(String nombre_usuario, String contrasenna) {
         super(nombre_usuario, contrasenna);
     }
@@ -39,7 +44,18 @@ public class Sesion extends Interface_Sesion{
 
     @Override
     public void cerraSesion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        usuario = null;
+        res = "Sesión cerrada";
+    }
+
+    @Override
+    public void crearUsuario() {
+        if (usuario != null){
+            if (Usuario.agregarUsuario(usuario))
+                res = "El usuario fué agregado sactisfactoriamente.";
+            else
+                res = "El usuario no fué agregado";
+        }
     }
     
 }
