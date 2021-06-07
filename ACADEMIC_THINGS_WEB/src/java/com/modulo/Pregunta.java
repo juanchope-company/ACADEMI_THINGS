@@ -14,17 +14,17 @@ public class Pregunta {
             id_encuesta;
     
     private String
-            tipo,
-            contenido;
+            tipo = "",
+            contenido = "";
     
     private LinkedList<String>
-            banco_respuestas;
+            banco_respuestas = new LinkedList<>();
     
     private LinkedList<Integer>
-            respuestas_correctas;
+            respuestas_correctas = new LinkedList<>();
     
     private LinkedList<Respuesta>
-            las_respuestas;
+            las_respuestas = new LinkedList<>();
 
     public Long getConsecutivo() {
         return consecutivo;

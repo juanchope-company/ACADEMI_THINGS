@@ -35,14 +35,14 @@
                                 <input class="form-control" name='txt_genero' type="text" placeholder="Ingrese el genero"/>
                             </div>
                             <div class="form-reg-1">
-                            <label>Profeción: </label>
-                            <input class="form-control" name='txt_profesion' type="text" placeholder="Ingrese su profesión"/>
-                            <label>Nombre de universidad: </label>
-                            <input class="form-control" name='txt_universidad' type="text" placeholder="Ingrese el nombre de su universidad"/>
-                            <label>Descripción de perfil: </label>
-                            <input class="form-control" name='txt_perfil' type="text" placeholder="Ingrese la descripción del perfil"/>
-                            <label>Fecha de nacimiento: </label>
-                            <input class="form-control" name='txt_fecha_nacimiento' type="date" placeholder="Ingrese la fecha de nacimiento"/>
+                                <label>Profeción: </label>
+                                <input class="form-control" name='txt_profesion' type="text" placeholder="Ingrese su profesión"/>
+                                <label>Nombre de universidad: </label>
+                                <input class="form-control" name='txt_universidad' type="text" placeholder="Ingrese el nombre de su universidad"/>
+                                <label>Descripción de perfil: </label>
+                                <input class="form-control" name='txt_perfil' type="text" placeholder="Ingrese la descripción del perfil"/>
+                                <label>Fecha de nacimiento: </label>
+                                <input class="form-control" name='txt_fecha_nacimiento' type="date" placeholder="Ingrese la fecha de nacimiento"/>
                             </div>
                             <div class="form-reg-1">
                                 <label>Numero celular: </label>
@@ -53,10 +53,10 @@
                                 <input class="form-control" name='txt_contrasenna1' type="password" placeholder="Ingrese la contraseña deseada"/>
                                 <label>Confirmación de contraseña: </label>
                                 <input class="form-control" name='txt_contrasenna2' type="password" placeholder="Ingrese la contraseña nuevamente"/>
-                                <input name='txt_contrasenna2' type="password" placeholder="Ingrese la confirmación de la contraseña deseada"/>
                             </div>
                         </div>
                         <button class="button" name="btn_registrar" type='submit'>Guardar registro</button>
+                        <button class="button" onclick="window.location.href = 'inicio_sesion.jsp';">Guardar registro</button>
                     </form>
                 </div>
             </div>

@@ -23,7 +23,11 @@ public class Encuesta {
             contesta;
 
     private LinkedList<Pregunta> 
-            las_Preguntas;
+            las_Preguntas = new LinkedList<>();
+
+    public Encuesta() {
+        las_Preguntas.add(new Pregunta());
+    }
     
     public long getId() {
         return id;

@@ -9,7 +9,6 @@ import com.modulo.Usuario;
  */
 public class Sesion extends Interface_Sesion{
     
-    private String res;
     private Usuario usuario;
     
     public Sesion(){
@@ -23,10 +22,6 @@ public class Sesion extends Interface_Sesion{
     
     public Sesion(String nombre_usuario, String contrasenna) {
         super(nombre_usuario, contrasenna);
-    }
-    
-    public String respuesta(){
-        return res;
     }
     
     public boolean esSesionValida(){
@@ -62,4 +57,8 @@ public class Sesion extends Interface_Sesion{
                 res = "El usuario no fué agregado";
         }
     }    
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
 }
