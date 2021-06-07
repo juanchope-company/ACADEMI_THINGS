@@ -1,7 +1,6 @@
 package com.modulo;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.HashMap;
@@ -221,6 +220,26 @@ public class Usuario {
                 
         return res;
     }
-    
+
+    public static boolean agregarUsuario(Usuario usuario){
+        String sentencia = "INSERT INTO usuario (nombre_completo,nombre_usuario,correo_electronico,genero,profesion,universidad,descipcion_de_perfil,"
+                + "numero_celular,contrasenna,fecha_nacimiento,foto_perfil) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        
+        return Conexion.ejecutarConsulta(
+                sentencia,
+                usuario.getNombre_completo(),
+                usuario.getNombre_usuario(),
+                usuario.getCorreo_electronico(),
+                usuario.getGenero(),
+                usuario.getProfesion(),
+                usuario.getUniversidad(),
+                usuario.getDescripcion_de_perfil(),
+                usuario.getNumero_celular(),
+                usuario.getContrasenna(),
+                usuario.getFecha_nacimiento(),
+                usuario.getFoto_perfil()
+        ); 
+        
+    }   
     
 }
