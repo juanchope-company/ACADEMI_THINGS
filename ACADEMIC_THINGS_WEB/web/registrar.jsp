@@ -18,7 +18,7 @@
         <header>
             <h1>Academic</h1><h2>Things</h2>
         </header>
-         <div class="fondo" style="background-image: url('images/academic.png')">
+        <div class="fondo" style="background-image: url('images/academic.png')">
             <div class="containerBody">
                 <div class="RegisterPage">
                     <h3>Registrar usuario</h3>

@@ -74,7 +74,7 @@
                 ruta = "escribir_manuscrito.jsp";
                 break;
             case "v_manuscrito":
-                ruta = "verescribir_manuscrito.jsp";
+                ruta = "escribir_manuscrito.jsp";
                 break;
             case "c_publicacion":
                 ruta = "crear_publicacion.jsp";

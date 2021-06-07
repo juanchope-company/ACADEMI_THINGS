@@ -13,5 +13,9 @@
     </head>
     <body>
         <h1>Bienvenidos a comentar publicacion</h1>
+        <form method="post">
+            <label>Comentario:</label>
+            <input class="form-control" name='txt_nom_completo' type="textarea" row="3" placeholder="Ingrese el nombre completo"/>
+        </form>
     </body>
 </html>
