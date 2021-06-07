@@ -12,6 +12,9 @@
         <title>Ver publicación</title>
     </head>
     <body>
-        <h1>Bienvenido a ver publicación</h1>
+        <h1>Aquí puedes ver tus publicaciones</h1>
+            <label>Contenido: </label>
+            <input class="form-control" type="text" placeholder="Contenido" name="txt_contenido" readonly>
+        
     </body>
 </html>

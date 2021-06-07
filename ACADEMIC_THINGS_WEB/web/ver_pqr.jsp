@@ -14,6 +14,12 @@
     </head>
     <body>
         <h1>Bienvenido a ver PQR</h1>
+            <label>Tipo: </label>
+            <input class="form-control" type="text" placeholder="Nombre de usuario" name="txt_tipo" readonly>
+            <label>Asunto: </label>
+            <input class="form-control" type="text" placeholder="Asunto" name="txt_asunto" readonly>
+            <label>Cuerpo </label>
+            <input class="form-control" type ="text" placeholder="Cuerpo" name="txt_cuerpo" readonly>
         <p>Aquí podrás ver tus pqrs y de las personas que las hayan echo</p>
     </body>
 </html>

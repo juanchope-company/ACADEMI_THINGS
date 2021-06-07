@@ -12,6 +12,10 @@
         <title>Crear publicación</title>
     </head>
     <body>
-        <h1>Bienvenidos a crear publicación</h1>
+        <h1>Bienvenidos a publicaciones</h1>
+        
+            <label>Contenido: </label>
+            <input class="form-control" type="text" placeholder="Contenido" name="txt_contenido">
+            <button class="button" type="submit" name="btn_publicacion">Publicar</button>
     </body>
 </html>
