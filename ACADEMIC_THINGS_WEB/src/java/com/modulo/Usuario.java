@@ -14,7 +14,7 @@ import java.util.LinkedList;
 public class Usuario {
     
     private long 
-            id;
+            id = 1;
     
     private String
             nombre_completo,
