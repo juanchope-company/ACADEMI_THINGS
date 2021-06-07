@@ -53,9 +53,10 @@
                                 <input class="form-control" name='txt_contrasenna1' type="password" placeholder="Ingrese la contraseña deseada"/>
                                 <label>Confirmación de contraseña: </label>
                                 <input class="form-control" name='txt_contrasenna2' type="password" placeholder="Ingrese la contraseña nuevamente"/>
+                                <input name='txt_contrasenna2' type="password" placeholder="Ingrese la confirmación de la contraseña deseada"/>
                             </div>
                         </div>
-                        <button class="button" type='submit'>Guardar registro</button>
+                        <button class="button" name="btn_registrar" type='submit'>Guardar registro</button>
                     </form>
                 </div>
             </div>
@@ -63,9 +64,6 @@
         <footer>
             <p>Proyecto base de datos, creado por: </p>
         </footer>
-            <input name='txt_contrasenna2' type="password" placeholder="Ingrese la confirmación de la contraseña deseada"/>
-            <button name="btn_registrar" type='submit'>Guardar registro</button>
-        </form>
 <%
     Sesion sesion_actual = null;
     
@@ -111,14 +109,10 @@
             );
             
             sesion_actual = new Sesion(usu);
-            
             sesion_actual.crearUsuario();
             
             String res = sesion_actual.respuesta();
             out.print("<script>alert('" + res + "');</script>");
-            
-            if (sesion_actual.esSesionValida())
-                response.sendRedirect("inicio_sesion.jsp");
         }
     }
     

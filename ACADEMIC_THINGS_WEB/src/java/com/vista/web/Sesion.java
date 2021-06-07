@@ -49,13 +49,17 @@ public class Sesion extends Interface_Sesion{
     }
 
     @Override
-    public void crearUsuario() {
+    public void crearUsuario() {        
         if (usuario != null){
+            res = usuario.validarCamposUsuario();
+
+            if (res != null)
+                return;
+            
             if (Usuario.agregarUsuario(usuario))
                 res = "El usuario fué agregado sactisfactoriamente.";
             else
                 res = "El usuario no fué agregado";
         }
-    }
-    
+    }    
 }

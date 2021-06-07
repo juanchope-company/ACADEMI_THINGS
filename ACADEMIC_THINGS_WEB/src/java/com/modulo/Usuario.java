@@ -228,5 +228,13 @@ public class Usuario {
             sentencia
         );              
     }   
+
+    public String validarCamposUsuario() {
+        String res = "";
+        
+        /** Aquí se ponen las validaciones de cada campo **/
+        
+        return res;
+    }
     
 }
