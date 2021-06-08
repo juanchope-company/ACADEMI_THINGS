@@ -17,7 +17,7 @@ CREATE TABLE USUARIO (
 	fecha_nacimiento DATE NOT NULL,
 	numero_celular INT NOT NULL,
 	foto_perfil BLOB,
-	contrasenna VARCHAR (20) NOT NULL
+	contraseña VARCHAR (20) NOT NULL
 );
 
 #PUBLICACIÓN 
@@ -144,3 +144,48 @@ CREATE TABLE LIBRO_INTERES (
 	CONSTRAINT fk_lbin_usuario FOREIGN KEY (id_usuario) REFERENCES USUARIO (id),
 	CONSTRAINT fk_lbin_libro FOREIGN KEY (id_libro) REFERENCES LIBRO (id)
 );
+
+#SCRIPT SQL
+
+#USUARIO
+
+ INSERT INTO usuario  (id,nombre,nombre_usuario,correo_electronico,genero,profesion,universidad,descripcion_perfil,fecha_nacimiento,numero_celular,foto_perfil, contrasenna) VALUES (2,"andres","andres_jose","andres_jose.urbano@uao.edu.co","Masculino","ingeniero",
+     "universidad autonoma","Estudiante 7 semestre","2020-08-06",5922356,null,
+     "asda"
+     );
+
+#PUBLICACION
+ INSERT INTO publicacion (id,fecha,hora,contenido,votos_positivos,votos_negativos,id_usuario) VALUES (2,"2020-06-10","10:00","pregunta asdadadadasd",null,null,2);
+
+#COMENTARIO
+ INSERT INTO comentario (id,contenido_comentario,fecha,hora,votos_positivos,votos_negativos,id_usuario, id_publicacion) VALUES (2,"dasdaddad","2020-10-12","12:00",3,1,2,2);
+ 
+#PQR
+ INSERT INTO pqr (id_solicitud,tipo,asunto,cuerpo,fecha,hora,id_usuario) VALUES (2,"P","peticion","dasdasdsadasdasd","2020-08-06","10:00",2);
+
+
+#MANUSCRITO
+ INSERT INTO manuscrito (id,encabezado,contenido,fecha,hora,archivo,id_publicacion,id_usuario) VALUES (2,"dasdasd","asdasdasdad","2020-06-09","9:00",null,2,2);
+
+
+#ENCUESTA
+  INSERT INTO encuesta (id,titulo,fecha_realizacion,descripcion,contesta,id_usuario) VALUES (2,"pregunta","2021-06-08","adasdadasd","si",2);
+
+#PREGUNTA
+INSERT INTO pregunta (id_encuesta,tipo,contenido,banco_respuestas,respuestas_correctas) VALUES (5,"abierta","as","asdasd","200","dasd");
+
+#BIBLIOTECA 
+ INSERT INTO biblioteca (id,id_usuario,id_libro,fecha_consulta) VALUES (4,2,3,"2020-06-08");
+
+#LIBRO
+ INSERT INTO libro (id,nombre,autor,fecha_publicacion,direccion_descarga,archivo) VALUES (2,"psicologia","Gabriel","2008-08-12","carrera 2232","archivo.jpg");
+
+#TEMATICA
+INSERT INTO tematica (id,nombre,descripcion) VALUES (2,"PSICOLOGIA","asdadsada");
+
+#LIBRO INTERES
+ INSERT INTO libro_interes (id,id_usuario,id_libro,fecha_consulta) VALUES (2,2,2,"2021-06-10");
+
+#COMENTARIO
+INSERT INTO comentario (id,contenido_comentario,fecha,hora,votos_positivos,votos_negativos,id_usuario,id_publicacion) 
+VALUES (5,"contenido del comentario","2020-06-15","13:00",2,3,2,2);
