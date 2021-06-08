@@ -17,7 +17,7 @@ CREATE TABLE USUARIO (
 	fecha_nacimiento DATE NOT NULL,
 	numero_celular INT NOT NULL,
 	foto_perfil BLOB,
-	contraseña VARCHAR (20) NOT NULL
+	contrasenna VARCHAR (20) NOT NULL
 );
 
 #PUBLICACIÓN 
@@ -149,10 +149,14 @@ CREATE TABLE LIBRO_INTERES (
 
 #USUARIO
 
- INSERT INTO usuario  (id,nombre,nombre_usuario,correo_electronico,genero,profesion,universidad,descripcion_perfil,fecha_nacimiento,numero_celular,foto_perfil, contrasenna) VALUES (2,"andres","andres_jose","andres_jose.urbano@uao.edu.co","Masculino","ingeniero",
+ INSERT INTO usuario  (id,nombre,nombre_usuario,correo_electronico,genero,profesion,universidad,descripcion_perfil,fecha_nacimiento,numero_celular,foto_perfil, contrasenna) VALUES (4,"andres","andres_jose","andres_jose.urbano@uao.edu.co","Masculino","ingeniero",
      "universidad autonoma","Estudiante 7 semestre","2020-08-06",5922356,null,
      "asda"
      );
+
+ 
+ 	INSERT INTO usuario  (id,nombre,nombre_usuario,correo_electronico,genero,profesion,universidad,descripcion_perfil,fecha_nacimiento,numero_celular,foto_perfil, contrasenna) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);
+     
 
 #PUBLICACION
  INSERT INTO publicacion (id,fecha,hora,contenido,votos_positivos,votos_negativos,id_usuario) VALUES (2,"2020-06-10","10:00","pregunta asdadadadasd",null,null,2);

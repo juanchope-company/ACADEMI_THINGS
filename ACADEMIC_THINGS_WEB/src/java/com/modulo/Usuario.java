@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.HashMap;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -184,8 +185,7 @@ public class Usuario {
     public static Usuario seleccionarUsuario(Usuario datos){
         Usuario res = null;
         
-        String sentencia = "Select * from USUARIO\n"
-                + "\tWHERE nombre_usuario = ? AND contrasenna = ?";
+        String sentencia = "Select * from USUARIO\n \tWHERE nombre_usuario = '"+datos.getNombre_usuario()+"' AND contrasenna='"+datos.getContrasenna()  ;
         
         LinkedList<HashMap<String, Object>> aux = Conexion.consultarFilas(
                 sentencia, 
@@ -199,22 +199,25 @@ public class Usuario {
         
         return res;
     }
-
+    
+    
     private static Usuario parseUsuario(HashMap<String, Object> datos) {
         Usuario res = null;
         
         Long id = (long) datos.get("id");
-        String nombre_completo = (String) datos.get("nombre_completo");
+        String nombre_completo = (String) datos.get("nombre");
         String nombre_usuario = (String) datos.get("nombre_usuario");
         String correo_electronico = (String) datos.get("correo_electronico");
         String genero = (String) datos.get("genero");
         String profesion = (String) datos.get("profesion");
         String universidad = (String) datos.get("universidad");
-        String descripcion_de_perfil = (String) datos.get("descripcion_de_perfil");
-        String numero_celular = (String) datos.get("numero_celular");
-        String contrasenna = (String) datos.get("contrasenna");
+        String descripcion_de_perfil = (String) datos.get("descripcion_perfil");
         LocalDate fecha_nacimiento = new Date(((Date) datos.get("fecha_nacimiento")).getTime()).toLocalDate();
+        String numero_celular = (String) datos.get("numero_celular");
         byte[] foto_perfil = (byte[]) datos.get("foto_perfil");
+        String contrasenna = (String) datos.get("contrasenna");
+        
+        
         
         res = new Usuario(id, nombre_completo, nombre_usuario, correo_electronico, genero, profesion, universidad, descripcion_de_perfil, numero_celular, contrasenna, fecha_nacimiento, foto_perfil);
                 
@@ -222,11 +225,12 @@ public class Usuario {
     }
 
     public static boolean agregarUsuario(Usuario usuario){
-        String sentencia = "INSERT INTO USUARIO (nombre_completo,nombre_usuario,correo_electronico,genero,profesion,universidad,descipcion_de_perfil,"
-                + "numero_celular,contrasenna,fecha_nacimiento,foto_perfil) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        String sentencia = "INSERT INTO usuario  (id,nombre,nombre_usuario,correo_electronico,genero,profesion,universidad,descripcion_perfil,fecha_nacmiento"
+                + "numero_celular,foto_perfil, contrasenna) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         
         return Conexion.ejecutarConsulta(
                 sentencia,
+                usuario.getId(),
                 usuario.getNombre_completo(),
                 usuario.getNombre_usuario(),
                 usuario.getCorreo_electronico(),
@@ -234,12 +238,60 @@ public class Usuario {
                 usuario.getProfesion(),
                 usuario.getUniversidad(),
                 usuario.getDescripcion_de_perfil(),
-                usuario.getNumero_celular(),
-                usuario.getContrasenna(),
                 usuario.getFecha_nacimiento(),
-                usuario.getFoto_perfil()
+                usuario.getNumero_celular(),
+                usuario.getFoto_perfil(),
+                usuario.getContrasenna()
+                
+              
         ); 
         
     }   
-    
+
+    public static Usuario validarCamposUsuario(HashMap<String, Object> datos) {
+        Usuario res=null;
+       Long id = (long) datos.get("id");
+        String nombre_completo = (String) datos.get("nombre");
+        String nombre_usuario = (String) datos.get("nombre_usuario");
+        String correo_electronico = (String) datos.get("correo_electronico");
+        String genero = (String) datos.get("genero");
+        String profesion = (String) datos.get("profesion");
+        String universidad = (String) datos.get("universidad");
+        String descripcion_de_perfil = (String) datos.get("descripcion_perfil");
+        LocalDate fecha_nacimiento = new Date(((Date) datos.get("fecha_nacimiento")).getTime()).toLocalDate();
+        String numero_celular = (String) datos.get("numero_celular");
+        byte[] foto_perfil = (byte[]) datos.get("foto_perfil");
+        String contrasenna = (String) datos.get("contrasenna");
+        
+        if(id<0 && id==null){
+            JOptionPane.showMessageDialog(null, "Debe insertar un id");
+            
+        }else if(nombre_completo==null){
+             JOptionPane.showMessageDialog(null, "Debe insertar un nombre completo");
+        }else if(nombre_usuario==null){
+             JOptionPane.showMessageDialog(null, "Debe insertar un nombre completo");
+        }else if(correo_electronico==null){
+            JOptionPane.showMessageDialog(null, "Debe insertar un correo electronico");
+        }else if(genero==null){
+            JOptionPane.showMessageDialog(null, "Debe insertar un genero");
+        }else if(profesion==null){
+             JOptionPane.showMessageDialog(null, "Debe insertar una profesion");
+        }else if(universidad==null){
+             JOptionPane.showMessageDialog(null, "Debe insertar una universidad");
+        }else if(descripcion_de_perfil==null){
+             JOptionPane.showMessageDialog(null, "Debe insertar una descripcion de perfil");
+        }else if(fecha_nacimiento==null){
+            JOptionPane.showMessageDialog(null, "Debe insertar una fecha de nacimiento");
+        }else if(numero_celular==null){
+             JOptionPane.showMessageDialog(null, "Debe insertar un número de celular");
+        }else if(contrasenna==null){
+             JOptionPane.showMessageDialog(null, "Debe insertar una contraseña");
+        }else{
+          res = new Usuario(id, nombre_completo, nombre_usuario, correo_electronico, genero, profesion, universidad, descripcion_de_perfil, numero_celular, contrasenna, fecha_nacimiento, foto_perfil);
+                
+//           return res;
+       
+        }
+     return res;
+    }
 }
