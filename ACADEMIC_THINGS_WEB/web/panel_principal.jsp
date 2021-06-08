@@ -22,14 +22,18 @@
         {"v_pqr","Ver PQRS"},
         {"e_manuscrito","Escribir manuscrito"},
         {"v_manuscrito","Ver Manuscrito"},
-        {"c_publicacion","crear Publicación"},
+        {"c_publicacion","Crear Publicación"},
         {"v_publicacion","Ver Publicación"},
-        {"com_publicacion","comentar Publicación"},
+        {"com_publicacion","Comentar Publicación"},
     };
 %>
     <body>
         <header>
             <h1>Academic</h1><h2>Things</h2>
+            <form method="get">
+                <input class="bar_busqueda" type="text" placeholder="Barra de busqueda">
+                <button class="lupa">🔎</button>
+            </form>
             <nav class="nav_panel">
             <label><%=nombre_usu%> Abe Maria ::</label>
             <button type="submit" onclick="window.location.href = 'inicio_sesion.jsp?cerrarSesion=true';">Logout</button>

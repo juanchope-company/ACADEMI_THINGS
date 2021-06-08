@@ -19,12 +19,15 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+        <div class="container">
         <h1>Crear encuesta</h1>
-        <form method="post">
+        <form method="post" class="formulario">
+            <div class="head-encuesta">
             <label>Titulo: </label>
             <input name='txt_titulo' type="text" placeholder="Ingrese el titulo de la encuesta"/>
             <label>Descripción: </label>
-            <input name='txt_descripción' type="text" placeholder="Ingrese la descripción de la encuesta"/>
+            <textarea class="long-text" name='txt_descripción' placeholder="Ingrese la descripción de la encuesta"></textarea>
+            </div>
             <ul>
 <%
     Sesion sesion_actual = null;
@@ -58,11 +61,18 @@
         }
 %>
             <li>
-                <label>Id: </label>
-                <input type="text" value='<%=i+1 %>' disabled/>
-                <label>Contenido: </label>
-                <input name='txt_contenido' type="text" value='<%=preguntas.get(i).getContenido() %>'/>
-                <label>Tipo: ¿Respuesta cerrada?</label>
+                <div class="cont-1">
+                    <div class="part-id">
+                    <label>Id: </label>
+                    <input type="text" value='<%=i+1 %>' disabled/>
+                    </div>
+                    <div class="part-div">
+                    <label>Contenido: </label>
+                    <input name='txt_contenido' type="text" value='<%=preguntas.get(i).getContenido() %>'/>
+                    </div>
+                </div>
+                    <label>Tipo: ¿Respuesta cerrada?</label>
+                
 <%
         if ( preguntas.get(i).getTipo().equals("cerrada")){
             out.print("<input name='txt_cerrada' type='checkbox' value='¿Respuesta cerrada?' checked/>");
@@ -76,13 +86,13 @@
                         + (j+1) + "' value='" + preguntas.get(i).getBanco_respuestas().get(j) + "'/>");
                 out.print("</li>");
             }
-            out.print("</ul><button type='submit' name='btn_agr_respuesta" + i + "'>Agregar nueva respuesta</button>");
+            out.print("</ul><button class='button' type='submit' name='btn_agr_respuesta" + i + "'>Agregar nueva respuesta</button>");
         }
         out.print("\t\t\t</li>");
     }
 
     
-    out.print("<button type='submit' name='btn_agr_encuesta'>Agregar nueva pregunta</button>");
+    out.print("<button class='button' type='submit' name='btn_agr_encuesta'>Agregar nueva pregunta</button>");
     
     encuesta.setLas_Preguntas(preguntas);
     encuestaWeb.setEncuesta(encuesta);
@@ -101,8 +111,10 @@
     session.setAttribute("encuesta", encuestaWeb);
     session.setAttribute("sesion", sesion_actual);
 %>
-            </lu>
-            <button type="submit" name="btn_guardar_encuesta">Guardar encuesta</button>
+             
+                </lu>
+            <button class="buttonPrincipal" type="submit" name="btn_guardar_encuesta">Guardar encuesta</button>
         </form>
+        </div>
     </body>
 </html>
