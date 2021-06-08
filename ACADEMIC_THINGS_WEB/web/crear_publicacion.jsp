@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Crear publicación</title>
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
 <%    
@@ -46,11 +47,15 @@
     
     String contenido = publicacion.getContenido();
 %> 
+    <div class="head-encuesta">
         <h1>Bienvenidos a publicaciones</h1>
+    </div>
+        
         <form method="post">
-            <label>Contenido: </label>
-            <input value="<%=contenido %>" class="form-control" type="text" placeholder="Contenido" name="txt_contenido">
-            <button class="button" type="submit" name="btn_publicacion">Publicar</button>
+            <div class="publicacion">
+            <textarea class="cont_publicacion" value="<%=contenido %>" class="form-control" type="text" placeholder="Contenido" name="txt_contenido" ></textarea>
+            <button class="buttonPublicacion" type="submit" name="btn_publicacion">Publicar</button>
+            </div>
         </form>
 <%    
     String res = null;    

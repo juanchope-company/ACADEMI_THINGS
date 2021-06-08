@@ -51,17 +51,27 @@
     String asunto = pqr.getAsunto();
     String cuerpo = pqr.getCuerpo();
 %>
+    <div class="head-encuesta">
         <h1>Bienvenidos a crear PQR</h1>
         <p>Aquí podrá crear PQRS</p>
+    </div>
+    <div class="formulario">
         <form method="get">
+          <div class="cont-1">
+              <div class="part-id">
             <label>Tipo: </label>
             <input value="<%=tipo %>" class="form-control" type="text" placeholder="Nombre de usuario" name="txt_tipo">
+              </div>
+              <div class="part-div">
             <label>Asunto: </label>
             <input value="<%=asunto %>" class="form-control" type="text" placeholder="Asunto" name="txt_asunto">
+              </div>
+          </div>
             <label>Cuerpo </label>
-            <input value="<%=cuerpo %>" class="form-control" type ="text" placeholder="Cuerpo" name="txt_cuerpo">
+            <textarea class="long-text" value="<%=cuerpo %>" class="form-control" type ="text" placeholder="Cuerpo" name="txt_cuerpo" ></textarea>
             <button class="button" type="submit" name="btn_ingresar_pqrs">Ingresar</button>
         </form>
+    </div>
 <%
     session.setAttribute("encuesta", pqr);
     session.setAttribute("sesion", sesion_actual);

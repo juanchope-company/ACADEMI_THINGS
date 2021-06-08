@@ -1,4 +1,3 @@
-
 <%-- 
     Document   : ver_pqr
     Created on : 6/06/2021, 11:52:01 PM
@@ -44,14 +43,26 @@
     String asunto = pqr.getAsunto();
     String cuerpo = pqr.getCuerpo();
 %>
-        <h1>Bienvenidos a crear PQR</h1>
-        <label>Tipo: </label>
-        <input value="<%=tipo %>" class="form-control" type="text" placeholder="Nombre de usuario" disabled/>
-        <label>Asunto: </label>
-        <input value="<%=asunto %>" class="form-control" type="text" placeholder="Asunto" disabled/>
+    <div class="head-encuesta">
+        <h1>Bienvenidos a ver PQR</h1>
+    </div>
+    <div class="formulario">
+        <div class="cont-1">
+            <div class="cont-1">
+                <div class="part-id">
+                <label>Tipo: </label>
+                <input value="<%=tipo %>" type="text" placeholder="Ingrese ('P' Pregunta, 'Q' Queja , 'R' Reclamo)" disabled/>
+                </div>
+                <div class="part-div">
+                <label>Asunto: </label>
+                <input value="<%=asunto %>" type="text" placeholder="Asunto" disabled/>
+                </div>
+            </div>
+        </div>
         <label>Cuerpo </label>
-        <input value="<%=cuerpo %>" class="form-control" type ="text" placeholder="Cuerpo" disabled/>
+        <textarea class="long-text" value="<%=cuerpo %>" class="form-control" type ="text" placeholder="Cuerpo" disabled="ture"></textarea>
         <button class="button" type="submit" name="btn_ingresar_pqrs">Ingresar</button>
+    </div>
 <%
     session.setAttribute("encuesta", pqr);
     session.setAttribute("sesion", sesion_actual);

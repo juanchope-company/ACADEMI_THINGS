@@ -20,8 +20,11 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <h1>Responder encuesta</h1>
+        <div class="container">
+            <h1>Responder encuesta</h1>
         <p>Aquí puedes responder tu encuesta</p>
+        <br>
+        <div class="formulario">
         <form method="post">
 <%
     Sesion sesion_actual = null;
@@ -46,10 +49,13 @@
     String descrpcion  = encuesta.getDescripcion();
     
 %>
+            
+        <div class="head-encuesta">
             <label>Titulo: </label>
             <input value="<%=titulo %>" name='txt_titulo' type="text" placeholder="Ingrese el titulo de la encuesta" disabled/>
             <label>Descripción: </label>
             <input value="<%=descrpcion %>" name='txt_descripción' type="text" placeholder="Ingrese la descripción de la encuesta" disabled/>
+        </div>
             <ul>
 <%
     if (request.getParameter("btn_agr_encuesta") != null)
@@ -69,10 +75,16 @@
         String tipo = preguntas.get(i).getTipo();
 %>
             <li>
+            <div class="cont-1">
+                <div class="part-id">
                 <label>Id: </label>
                 <input type="text" value='<%=i+1 %>' disabled/>
+                </div>
+                <div class="part-div">
                 <label>Contenido: </label>
                 <input value="<%=contenido %>" name='txt_contenido' type="text" value='<%=preguntas.get(i).getContenido() %>' disabled/>
+                </div>
+            </div>
                 <label>Tipo: ¿Respuesta cerrada?</label>
 <%
         Respuesta res = new Respuesta();
@@ -122,8 +134,10 @@
     session.setAttribute("sesion", sesion_actual);
 %>
             </lu>
-            <button type="submit" name="btn_guardar_encuesta">Guardar encuesta</button>
+            <button class="button" type="submit" name="btn_guardar_encuesta">Guardar encuesta</button>
         </form>
+        </div>
+        </div>
     </body>
 </html>
 

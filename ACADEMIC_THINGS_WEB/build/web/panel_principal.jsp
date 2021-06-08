@@ -35,7 +35,7 @@
                 <button class="lupa">🔎</button>
             </form>
             <nav class="nav_panel">
-            <label><%=nombre_usu%> Abe Maria ::</label>
+            <label><%=nombre_usu%> ::</label>
             <button type="submit" onclick="window.location.href = 'inicio_sesion.jsp?cerrarSesion=true';">Logout</button>
             </nav>
         </header>
@@ -78,7 +78,7 @@
                 ruta = "escribir_manuscrito.jsp";
                 break;
             case "v_manuscrito":
-                ruta = "escribir_manuscrito.jsp";
+                ruta = "ver_manuscrito.jsp";
                 break;
             case "c_publicacion":
                 ruta = "crear_publicacion.jsp";

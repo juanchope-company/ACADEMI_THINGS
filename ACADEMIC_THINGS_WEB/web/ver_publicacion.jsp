@@ -17,8 +17,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <title>Ver publicación</title>
+        <link rel="stylesheet" href="css/style.css">
     </head>
-    <body
+    <body>
 <%
     Sesion sesion_actual = null;
     Publicacion publicacion = null;
@@ -66,8 +67,11 @@
     session.setAttribute("encuesta", publicacion);
     session.setAttribute("sesion", sesion_actual);
 %>
+    <div class="formulario">
         <form method="post">
-            <h1>Aquí puedes ver tus publicaciones</h1>
+            <div class="head-encuesta">
+                <h1>Aquí puedes ver tus publicaciones</h1>
+            </div>
             <label>Id: </label>
             <input class="form-control" type="text" value="<%=id %>" placeholder="Id" name="txt_id" readonly>
             <label>Fecha: </label>
@@ -75,12 +79,12 @@
             <label>Hora: </label>
             <input class="form-control" type="time" value="<%=horaStr %>" placeholder="Hora" name="txt_hora" readonly>
             <label>Contenido: </label>
-            <input class="form-control" type="text" value="<%=contenido %>" placeholder="Contenido" name="txt_contenido" readonly>
+            <textarea class="long-text" type="text" value="<%=contenido %>" placeholder="Contenido" name="txt_contenido" readonly ></textarea>
             <label>Votos positivos: </label>
             <input class="form-control" type="text" value="<%=votos_p %>" placeholder="Votos positivos" name="txt_votos_p" readonly>
             <label>Votos negativos </label>
             <input class="form-control" type="text" value="<%=votos_n %>" placeholder="Votos negativos" name="txt_votos_n" readonly>
-        <form>
-
+        </form>
+    </div>
     </body>
 </html>
