@@ -28,27 +28,27 @@
     };
 %>
     <body>
-        <nav>
-            <label><%=nombre_usu%></label>
-            <button type="submit" onclick="window.location.href = 'inicio_sesion.jsp?cerrarSesion=true';">CerrarSesion</button>
-        </nav>
+        <header>
+            <h1>Academic</h1><h2>Things</h2>
+            <nav class="nav_panel">
+            <label><%=nombre_usu%> Abe Maria ::</label>
+            <button type="submit" onclick="window.location.href = 'inicio_sesion.jsp?cerrarSesion=true';">Logout</button>
+            </nav>
+        </header>
+            <div class="panel_principal">
         <div class="lista-opciones">
-            <p>Lista de opciones puede ser en una etiqueta diferente de p<p>
+            <h3>Menú de Navegación</h3>
             <form method="get">
                 <ul>
 <%
     for (String[] opcion : opciones) {
-        out.print("\t\t\t\t<li><a href='?res=" + opcion[0] + "'>" + opcion[1] + "</a></li>");
+        out.print("\t\t\t\t<li class='li_op'><a class='link' href='?res=" + opcion[0] + "'>" + opcion[1] + "</a></li>");
     }
 %>
                 </lu>
             </form>
         </div>
         <div class="contenedor-vualizacion">
-            <p>Aquí se debe poner donde van las vistas de las opciones</p>
-            <p>por defecto se mostrarán las publicaciones</p>
-            <p>preferiblemente se debe poner un iframe aqui si es conveniente</p>
-            <p>y cambiar su contenido dependiendo de la opción usada</p>
 <%
     String aux = request.getParameter("res"), 
             ruta = "";
@@ -78,6 +78,7 @@
     out.print("<iframe src=\"" + ruta + "\"></ifram>");
     
 %>
+        </div>
         </div>
     </body>
 </html>
