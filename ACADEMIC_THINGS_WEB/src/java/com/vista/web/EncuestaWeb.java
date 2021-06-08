@@ -15,8 +15,9 @@ public class EncuestaWeb extends Interface_Encuesta{
     }
 
     @Override
-    public void crearEncuesta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void crearEncuesta() { 
+        //res = Encuesta.validarEncuesta(encuesta);
+        //Encuesta.agregarEncuesta(encuesta);
     }
 
     @Override
@@ -45,6 +46,10 @@ public class EncuestaWeb extends Interface_Encuesta{
 
     public void setEncuesta(Encuesta encuesta) {
         this.encuesta = encuesta;
+    }
+    
+    public boolean validarEncuesta(){
+        return Encuesta.selecionarEncuesta(encuesta) != null;
     }
     
 }

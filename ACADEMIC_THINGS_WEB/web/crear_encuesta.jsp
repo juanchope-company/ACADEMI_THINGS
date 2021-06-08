@@ -46,11 +46,15 @@
     LinkedList<Pregunta> preguntas = encuesta.getLas_Preguntas();
     
     if (request.getParameter("btn_agr_encuesta") != null)
-        preguntas.add(new Pregunta());        
+        preguntas.add(new Pregunta());   
     
     for(int i = 0; i < preguntas.size(); i++){
         if (request.getParameter("btn_agr_respuesta" + i) != null){
             preguntas.get(i).getBanco_respuestas().add("");         
+            if (preguntas.get(i).getTipo().equals("Cerrada")){
+                for (int j = 1; j < preguntas.get(i).getBanco_respuestas().size(); j++)
+                    preguntas.get(i).getBanco_respuestas().remove(1);
+            }                
         }
 %>
             <li>
@@ -83,10 +87,22 @@
     encuesta.setLas_Preguntas(preguntas);
     encuestaWeb.setEncuesta(encuesta);
 
+        
+    if (request.getParameter("btn_guardar_encuesta") != null){
+        encuestaWeb.agregarEncuesta();
+        
+        String res = encuestaWeb.respuesta();
+        out.print("<Script>" + res + "</Script>");
+
+        if (encuestaWeb.validarEncuesta())
+            encuestaWeb = null;
+    }
+
     session.setAttribute("encuesta", encuestaWeb);
     session.setAttribute("sesion", sesion_actual);
 %>
             </lu>
+            <button type="submit" name="btn_guardar_encuesta">Guardar encuesta</button>
         </form>
     </body>
 </html>

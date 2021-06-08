@@ -4,6 +4,7 @@
     Author     : Desarollo
 --%>
 
+<%@page import="java.time.LocalDate"%>
 <%@page import="com.modulo.Usuario"%>
 <%@page import="com.vista.web.Sesion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,6 +26,8 @@
                     <form method="post">
                         <div class="reg-rows">
                             <div class="form-reg-1">
+                                <label>Numero id: </label>
+                                <input class="form-control" name='txt_num_id' type="number" placeholder="Ingrese el numero id"/>
                                 <label>Nombre completo: </label>
                                 <input class="form-control" name='txt_nom_completo' type="text" placeholder="Ingrese el nombre completo"/>
                                 <label>Nombre de usuario: </label>
@@ -56,7 +59,7 @@
                             </div>
                         </div>
                         <button class="button" name="btn_registrar" type='submit'>Guardar registro</button>
-                        <button class="button" onclick="window.location.href = 'inicio_sesion.jsp';">Guardar registro</button>
+                        <button class="button" name="btn_atras" type="submit">Atras</button>
                     </form>
                 </div>
             </div>
@@ -75,6 +78,10 @@
         sesion_actual = new Sesion();
     }
     
+    if (request.getParameter("btn_atras")!= null){
+        session.setAttribute("sesion", null);
+        response.sendRedirect("inicio_sesion.jsp");
+    }
     if (request.getParameter("btn_registrar")!= null){
         String 
                 nombre_completo = request.getParameter("txt_nom_completo"),
@@ -89,12 +96,22 @@
                 contrasenna2 = request.getParameter("txt_contrasenna2"),
                 numero_celular = request.getParameter("txt_num_celular");
         
-//        byte[] foto_perfil = request.getParameter("txt_foto_perfil");
-
-        out.print(fecha_nacimientoStr);
+        Long numero_id = Long.parseLong(request.getParameter("txt_num_id"));
+        
+    //        byte[] foto_perfil = request.getParameter("txt_foto_perfil");
+    
+        LocalDate fecha = null;
+        
+        try {
+            String[] aux1 = fecha_nacimientoStr.split("-");
+            fecha = LocalDate.of(Integer.valueOf(aux1[0]), Integer.valueOf(aux1[1]), Integer.valueOf(aux1[2]));
+        } catch (Exception e) {
+        }
+        
         if (contrasenna1.equals(contrasenna2)){
             
             Usuario usu = new Usuario(
+                    numero_id,
                     nombre_completo, 
                     nombre_usuario, 
                     correo_electronico, 
@@ -104,8 +121,8 @@
                     descripcion_perfil, 
                     numero_celular, 
                     contrasenna1, 
-                    null, 
-                    null
+                    fecha, 
+                    new byte[0]
             );
             
             sesion_actual = new Sesion(usu);
