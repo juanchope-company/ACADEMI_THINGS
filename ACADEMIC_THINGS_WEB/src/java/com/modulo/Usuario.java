@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.HashMap;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -199,7 +200,8 @@ public class Usuario {
         
         return res;
     }
-
+    
+    
     private static Usuario parseUsuario(HashMap<String, Object> datos) {
         Usuario res = null;
         
@@ -214,7 +216,7 @@ public class Usuario {
         String numero_celular = (String) datos.get("numero_celular");
         String contrasenna = (String) datos.get("contrasenna");
         LocalDate fecha_nacimiento = new Date(((Date) datos.get("fecha_nacimiento")).getTime()).toLocalDate();
-        byte[] foto_perfil = (byte[]) datos.get("foto_perfil");
+        byte[] foto_perfil = (byte[]) datos.get("foto_perfil");       
         
         res = new Usuario(id, nombre_completo, nombre_usuario, correo_electronico, genero, profesion, universidad, descripcion_de_perfil, numero_celular, contrasenna, fecha_nacimiento, foto_perfil);
                 
@@ -243,8 +245,46 @@ public class Usuario {
         
     }   
 
-    public String validarCamposUsuario() {
-        return null;
+    public static String validarCamposUsuario(Usuario datos) {
+        String res=null;
+        
+        Long id = datos.getId();
+        String nombre_completo = datos.getNombre_completo();
+        String nombre_usuario = datos.getNombre_usuario();
+        String correo_electronico = datos.getCorreo_electronico();
+        String genero = datos.getGenero();
+        String profesion = datos.getProfesion();
+        String universidad = datos.getUniversidad();
+        String descripcion_de_perfil = datos.getDescripcion_de_perfil();
+        LocalDate fecha_nacimiento = datos.getFecha_nacimiento();
+        String numero_celular = datos.getNumero_celular();
+        byte[] foto_perfil = datos.getFoto_perfil();
+        String contrasenna = datos.getContrasenna();
+        
+        if(id<=1000000){
+            res = "Debe insertar un id valido de minimo 1000000";            
+        }else if(nombre_completo.length() < 4){
+            res = "Debe insertar un nombre de mas de 4 caracteres";
+        }else if(nombre_usuario.length() < 4){
+            res = "Debe insertar un nombre de mas de 4 caracteres";
+        }else if(!correo_electronico.contains("@") || correo_electronico.length() < 8){
+            res = "Debe insertar un correo electronico valido";
+        }else if(!genero.equals("masculino") && !genero.equals("femenino")){
+            res = "Debe insertar un genero [masculino o femenino]";
+        }else if(profesion.length() < 5){
+            res = "Debe insertar una profesion con mas de 5 caracteres";
+        }else if(universidad.length() < 5){
+            res = "Debe insertar una universidad de mas de 5 caracteres";
+        }else if(descripcion_de_perfil.length() < 5){
+            res = "Debe insertar una descripcion de perfil de mas de 5 caracteres";
+        }else if(fecha_nacimiento.isAfter(LocalDate.now().plusYears(Long.parseLong("-18")))){
+            res = "Debes ser mayor de edad";
+        }else if(!numero_celular.contains("+") || numero_celular.length() < 13 ){
+            res = "Debe insertar un número de celular y su indicativo +57 1234";
+        }else if(contrasenna.length() < 8){
+            res = "Debe insertar una contraseña con mas de 8 caracteres";
+        }
+        
+        return res;
     }
-    
 }

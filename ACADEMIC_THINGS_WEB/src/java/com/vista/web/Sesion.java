@@ -34,7 +34,8 @@ public class Sesion extends Interface_Sesion{
         try {
             usuario = Usuario.seleccionarUsuario(usuario);
             if (usuario != null){
-                res = "bienvenido";
+                res = "bienvenido " + usuario.getNombre_completo();
+                return;
             }
         } catch (Exception e) {
             res = "falló";
@@ -51,7 +52,7 @@ public class Sesion extends Interface_Sesion{
     @Override
     public void crearUsuario() {        
         if (usuario != null){
-            res = usuario.validarCamposUsuario();
+            res = Usuario.validarCamposUsuario(usuario);
 
             if (res != null)
                 return;

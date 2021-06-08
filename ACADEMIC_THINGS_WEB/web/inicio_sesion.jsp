@@ -51,6 +51,8 @@
         String res = sesion_actual.respuesta();        
         out.print("<script>alert('" + res + "');</script>");
 
+        session.setAttribute("sesion", sesion_actual);
+        
         if (sesion_actual.esSesionValida())
             response.sendRedirect("panel_principal.jsp");
 

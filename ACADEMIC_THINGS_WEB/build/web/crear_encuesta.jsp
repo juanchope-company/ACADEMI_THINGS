@@ -111,7 +111,6 @@
         out.print("\t\t\t</li>");
     }
 
-    
     out.print("<button class='button' type='submit' name='btn_agr_encuesta'>Agregar nueva pregunta</button>");
     
     encuesta.setLas_Preguntas(preguntas);

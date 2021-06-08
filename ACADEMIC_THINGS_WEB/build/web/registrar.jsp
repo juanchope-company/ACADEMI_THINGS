@@ -4,6 +4,7 @@
     Author     : Desarollo
 --%>
 
+<%@page import="jdk.nashorn.internal.ir.BreakNode"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="com.modulo.Usuario"%>
 <%@page import="com.vista.web.Sesion"%>
@@ -23,39 +24,84 @@
             <div class="containerBody">
                 <div class="RegisterPage">
                     <h3>Registrar usuario</h3>
+<%
+     String 
+            nombre_completo = request.getParameter("txt_nom_completo"),
+            nombre_usuario = request.getParameter("txt_usuario"),
+            correo_electronico = request.getParameter("txt_correo"),
+            genero = request.getParameter("txt_genero"),
+            profesion = request.getParameter("txt_profesion"),
+            nombre_universidad = request.getParameter("txt_universidad"),
+            descripcion_perfil = request.getParameter("txt_perfil"),
+            fecha_nacimientoStr = request.getParameter("txt_fecha_nacimiento"),
+            contrasenna1 = request.getParameter("txt_contrasenna1"),
+            contrasenna2 = request.getParameter("txt_contrasenna2"),
+            numero_celular = request.getParameter("txt_num_celular");
+     
+    Long numero_id = null;
+    String id = "";
+    
+    try {
+        numero_id =  Long.parseLong(request.getParameter("txt_num_id"));
+        id = numero_id +"";
+    } catch (Exception e) {
+    }
+
+    if (nombre_completo == null)
+        nombre_completo ="";
+    if (nombre_usuario == null)
+        nombre_usuario ="";
+    if (correo_electronico == null)
+        correo_electronico ="";
+    if (genero == null)
+        genero ="";
+    if (profesion == null)
+        profesion ="";
+    if (nombre_universidad == null)
+        nombre_universidad ="";
+    if (descripcion_perfil == null)
+        descripcion_perfil ="";
+    if (fecha_nacimientoStr == null)
+        fecha_nacimientoStr ="";
+    if (contrasenna1 == null)
+        contrasenna1 ="";
+    if (contrasenna2 == null)
+        contrasenna2 ="";
+    
+%>
                     <form method="post">
                         <div class="reg-rows">
                             <div class="form-reg-1">
                                 <label>Numero id: </label>
-                                <input class="form-control2" name='txt_num_id' type="number" placeholder="Ingrese el numero id"/>
+                                <input value="<%=numero_id %>" class="form-control2" name='txt_num_id' type="number" placeholder="Ingrese el numero id"/>
                                 <label>Nombre completo: </label>
-                                <input class="form-control2" name='txt_nom_completo' type="text" placeholder="Ingrese el nombre completo"/>
+                                <input value="<%=nombre_completo %>" class="form-control2" name='txt_nom_completo' type="text" placeholder="Ingrese el nombre completo"/>
                                 <label>Nombre de usuario: </label>
-                                <input class="form-control2" name='txt_usuario' type="text" placeholder="Ingrese el nombre de usuario"/>
+                                <input value="<%=nombre_usuario %>" class="form-control2" name='txt_usuario' type="text" placeholder="Ingrese el nombre de usuario"/>
                                 <label>Correo electronico: </label>
-                                <input class="form-control2" name='txt_correo' type="text" placeholder="Ingrese el correo electronico"/>
+                                <input value="<%=correo_electronico %>" class="form-control2" name='txt_correo' type="text" placeholder="Ingrese el correo electronico"/>
                                 <label>Genero: </label>
-                                <input class="form-control2" name='txt_genero' type="text" placeholder="Ingrese el genero"/>
+                                <input value="<%=genero %>" class="form-control2" name='txt_genero' type="text" placeholder="Ingrese el genero"/>
                             </div>
                             <div class="form-reg-1">
                                 <label>Profeción: </label>
-                                <input class="form-control2" name='txt_profesion' type="text" placeholder="Ingrese su profesión"/>
+                                <input value="<%=profesion %>" class="form-control2" name='txt_profesion' type="text" placeholder="Ingrese su profesión"/>
                                 <label>Nombre de universidad: </label>
-                                <input class="form-control2" name='txt_universidad' type="text" placeholder="Ingrese el nombre de su universidad"/>
+                                <input value="<%=nombre_universidad %>" class="form-control2" name='txt_universidad' type="text" placeholder="Ingrese el nombre de su universidad"/>
                                 <label>Descripción de perfil: </label>
-                                <input class="form-control2" name='txt_perfil' type="text" placeholder="Ingrese la descripción del perfil"/>
+                                <input value="<%=descripcion_perfil %>" class="form-control2" name='txt_perfil' type="text" placeholder="Ingrese la descripción del perfil"/>
                                 <label>Fecha de nacimiento: </label>
-                                <input class="form-control2" name='txt_fecha_nacimiento' type="date" placeholder="Ingrese la fecha de nacimiento"/>
+                                <input value="<%=fecha_nacimientoStr %>" class="form-control2" name='txt_fecha_nacimiento' type="date" placeholder="Ingrese la fecha de nacimiento"/>
                             </div>
                             <div class="form-reg-1">
                                 <label>Numero celular: </label>
-                                <input class="form-control2" name='txt_num_celular' type="tel" placeholder="Ingrese el número de celular"/>
+                                <input value="<%=numero_celular %>" class="form-control2" name='txt_num_celular' type="tel" placeholder="Ingrese el número de celular"/>
                                 <label>Foto de perfil: </label>
                                 <input class="form-control2" name='txt_foto_perfil' type="text" placeholder="Ingrese la foto de perfil"/>
                                 <label>Contraseña: </label>
-                                <input class="form-control2" name='txt_contrasenna1' type="password" placeholder="Ingrese la contraseña deseada"/>
+                                <input value="<%=contrasenna1 %>" class="form-control2" name='txt_contrasenna1' type="password" placeholder="Ingrese la contraseña deseada"/>
                                 <label>Confirmación de contraseña: </label>
-                                <input class="form-control2" name='txt_contrasenna2' type="password" placeholder="Ingrese la contraseña nuevamente"/>
+                                <input value="<%=contrasenna2 %>" class="form-control2" name='txt_contrasenna2' type="password" placeholder="Ingrese la contraseña nuevamente"/>
                             </div>
                         </div>
                         <button class="button" name="btn_registrar" type='submit'>Guardar registro</button>
@@ -80,23 +126,10 @@
         session.setAttribute("sesion", null);
         response.sendRedirect("inicio_sesion.jsp");
     }
-    if (request.getParameter("btn_registrar")!= null){
-        String 
-                nombre_completo = request.getParameter("txt_nom_completo"),
-                nombre_usuario = request.getParameter("txt_usuario"),
-                correo_electronico = request.getParameter("txt_correo"),
-                genero = request.getParameter("txt_genero"),
-                profesion = request.getParameter("txt_profesion"),
-                nombre_universidad = request.getParameter("txt_universidad"),
-                descripcion_perfil = request.getParameter("txt_perfil"),
-                fecha_nacimientoStr = request.getParameter("txt_fecha_nacimiento"),
-                contrasenna1 = request.getParameter("txt_contrasenna1"),
-                contrasenna2 = request.getParameter("txt_contrasenna2"),
-                numero_celular = request.getParameter("txt_num_celular");
-        
-        Long numero_id = Long.parseLong(request.getParameter("txt_num_id"));
-        
-    //        byte[] foto_perfil = request.getParameter("txt_foto_perfil");
+    if (request.getParameter("btn_registrar")!= null && !contrasenna1.equals(contrasenna2))
+        out.print("<script>alert('Contraseña no coincide');</script>");
+    else if (request.getParameter("btn_registrar")!= null){
+        //        byte[] foto_perfil = request.getParameter("txt_foto_perfil");
     
         LocalDate fecha = null;
         

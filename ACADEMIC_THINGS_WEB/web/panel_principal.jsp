@@ -4,6 +4,7 @@
     Author     : Desarollo
 --%>
 
+<%@page import="com.vista.web.Sesion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,22 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
 <%
+    Sesion sesion_actual = null;
     String nombre_usu = "";
+    
+    try {
+        sesion_actual = (Sesion) session.getAttribute("sesion");
+        if (sesion_actual == null)
+            sesion_actual = new Sesion();
+    } catch (Exception e) {
+        sesion_actual = new Sesion();
+    }
+    
+    try {
+        nombre_usu = sesion_actual.getUsuario().getNombre_completo();
+    } catch (Exception e) {
+    }
+    
     String[][] opciones = {
         {"c_encuesta","Crear encuesta"},
         {"v_encuesta","Ver encuestas"},
@@ -35,7 +51,7 @@
                 <button class="lupa">🔎</button>
             </form>
             <nav class="nav_panel">
-            <label><%=nombre_usu%> ::</label>
+            <label><%=nombre_usu %> ::</label>
             <button type="submit" onclick="window.location.href = 'inicio_sesion.jsp?cerrarSesion=true';">Logout</button>
             </nav>
         </header>
