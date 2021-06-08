@@ -8,13 +8,18 @@ import java.util.LinkedList;
  * @author Juanchope
  */
 public class Encuesta {
+
+    public static boolean agregarEncuesta(Encuesta encuesta) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     private long 
-            id;
+            id=-1,
+            id_usuario=-1;
     
     private String
-            titulo,
-            descripcion;
+            titulo="",
+            descripcion="";
     
     private LocalDate
             fecha_realizacon;
@@ -23,13 +28,19 @@ public class Encuesta {
             contesta;
 
     private LinkedList<Pregunta> 
-            las_Preguntas;
+            las_Preguntas = new LinkedList<>();
+
+    public Encuesta() {
+        las_Preguntas.add(new Pregunta());
+    }
     
     public long getId() {
         return id;
     }
 
     public String getTitulo() {
+        if (titulo == null)
+            titulo = "";
         return titulo;
     }
 
@@ -38,6 +49,8 @@ public class Encuesta {
     }
 
     public String getDescripcion() {
+        if (descripcion == null)
+            descripcion = "";
         return descripcion;
     }
 
@@ -68,6 +81,14 @@ public class Encuesta {
     public void setLas_Preguntas(LinkedList<Pregunta> las_Preguntas) {
         this.las_Preguntas = las_Preguntas;
     }
+
+    public long getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(long id_usuario) {
+        this.id_usuario = id_usuario;
+    }
     
     public static Encuesta selecionarEncuesta(Encuesta datos){
         Encuesta res = null;
@@ -77,6 +98,15 @@ public class Encuesta {
         return res;
     }
     
-    
+    public static boolean crearEncuesta (Encuesta encuesta){
+        String sentencia = "INSERT INTO ENCUESTA (titulo,descripcion,contesta,id_usuario) VALUES (?,?,?,?)";
+        return Conexion.ejecutarConsulta(
+                sentencia,
+                encuesta.getTitulo(),
+                encuesta.getDescripcion(),
+                encuesta.isContesta(),
+                encuesta.getId_usuario()
+        );
+    }
     
 }

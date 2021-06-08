@@ -47,6 +47,10 @@ public class Pregunta {
     private LinkedList<Respuesta>
             las_respuestas;
 
+    Pregunta() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Long getConsecutivo() {
         return consecutivo;
     }
