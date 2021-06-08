@@ -20,15 +20,25 @@
     
     try {
         sesion_actual = (Sesion) session.getAttribute("sesion");
-        publicacion = (Publicacion) session.getAttribute("encuesta");
         if (sesion_actual == null)
             sesion_actual = new Sesion();
+    } catch (Exception e) {
+        sesion_actual = new Sesion();
+    }
+    
+    try {
+        publicacion = (Publicacion) session.getAttribute("encuesta");
         if (publicacion == null)
             publicacion = new Publicacion(sesion_actual.getUsuario());
     } catch (Exception e) {
-        sesion_actual = new Sesion();
-        publicacion = new Publicacion(sesion_actual.getUsuario());
+        try {
+            publicacion = new Publicacion(sesion_actual.getUsuario());
+        } catch (Exception ex) {
+            response.sendRedirect("ver_publicacion.jsp");
+            return;
+        }
     }
+    
     try {
         publicacion.setContenido(request.getParameter("txt_contenido"));
     } catch (Exception e) {

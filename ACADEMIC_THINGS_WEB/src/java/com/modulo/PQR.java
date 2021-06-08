@@ -7,8 +7,7 @@ import java.time.LocalTime;
  *
  * @author Juanchope
  */
-public class PQR {
-    
+public class PQR {    
     
     private Long
             id_solicitud,
@@ -27,6 +26,10 @@ public class PQR {
     private LocalTime
             hora;
 
+    public PQR(Usuario usuario) {
+        id_usuario = usuario.getId();
+    }   
+    
     public PQR(Long id_solicitud, Long id_usuario, char tipo, String asunto, String cuerpo, LocalDate fecha, LocalTime hora) {
         this.id_solicitud = id_solicitud;
         this.id_usuario = id_usuario;
@@ -54,6 +57,11 @@ public class PQR {
     }
 
     public char getTipo() {
+        try {
+            return tipo;
+        } catch (Exception e) {
+            tipo = ' ';
+        }
         return tipo;
     }
 
@@ -62,6 +70,8 @@ public class PQR {
     }
 
     public String getAsunto() {
+        if (asunto == null)
+            asunto = "";
         return asunto;
     }
 
@@ -70,6 +80,8 @@ public class PQR {
     }
 
     public String getCuerpo() {
+        if (cuerpo == null)
+            cuerpo = "";
         return cuerpo;
     }
 
