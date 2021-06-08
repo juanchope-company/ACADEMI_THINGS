@@ -222,7 +222,7 @@ public class Usuario {
     }
 
     public static boolean agregarUsuario(Usuario usuario){
-        String sentencia = "INSERT INTO usuario (nombre_completo,nombre_usuario,correo_electronico,genero,profesion,universidad,descipcion_de_perfil,"
+        String sentencia = "INSERT INTO USUARIO (nombre_completo,nombre_usuario,correo_electronico,genero,profesion,universidad,descipcion_de_perfil,"
                 + "numero_celular,contrasenna,fecha_nacimiento,foto_perfil) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         
         return Conexion.ejecutarConsulta(

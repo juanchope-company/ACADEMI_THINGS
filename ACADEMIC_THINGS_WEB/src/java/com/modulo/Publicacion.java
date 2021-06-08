@@ -8,6 +8,17 @@ import java.time.LocalTime;
  * @author Juanchope
  */
 public class Publicacion {
+
+    public Publicacion(int id, int votos_positivos, int votos_negativos, LocalDate fecha, LocalTime hora, String contenido) {
+        this.id = id;
+        this.votos_positivos = votos_positivos;
+        this.votos_negativos = votos_negativos;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.contenido = contenido;
+    }
+    
+    
     
     private int 
             id,

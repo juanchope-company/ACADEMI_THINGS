@@ -1,5 +1,6 @@
 package com.modulo;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
@@ -8,6 +9,26 @@ import java.util.LinkedList;
  * 
  */
 public class Pregunta {
+
+    public Pregunta(Long consecutivo, Long id_encuesta, String tipo, String contenido, LinkedList<String> banco_respuestas, LinkedList<Integer> respuestas_correctas, LinkedList<Respuesta> las_respuestas) {
+        this.consecutivo = consecutivo;
+        this.id_encuesta = id_encuesta;
+        this.tipo = tipo;
+        this.contenido = contenido;
+        this.banco_respuestas = banco_respuestas;
+        this.respuestas_correctas = respuestas_correctas;
+        this.las_respuestas = las_respuestas;
+    }
+
+    public Pregunta(Long consecutivo, Long id_encuesta, String tipo, String contenido) {
+        this.consecutivo = consecutivo;
+        this.id_encuesta = id_encuesta;
+        this.tipo = tipo;
+        this.contenido = contenido;
+    }
+    
+    
+    
     
     private Long
             consecutivo,
@@ -82,11 +103,54 @@ public class Pregunta {
         this.las_respuestas = las_respuestas;
     }
     
-    public static Pregunta selecionarPregunta(Pregunta datos){
+  
+    
+     public static boolean agregarPregunta(Pregunta pregunta){
+     
+         
+        String sentencia = "INSERT INTO pregunta (id_encuesta,tipo,contenido) VALUES (?,?,?)";
+        return Conexion.ejecutarConsulta(
+                sentencia,
+                pregunta.getId_encuesta(),
+                pregunta.getTipo(),
+                pregunta.getContenido()
+        );
+        
+    }
+    
+     public static Pregunta seleccionarPregunta(Pregunta datos){
         Pregunta res = null;
         
-        /** proceso **/
+        String sentencia = "Select * from PREGUNTA\n";
         
+        LinkedList<HashMap<String, Object>> aux = Conexion.consultarFilas(
+                sentencia, 
+                datos.getConsecutivo(),
+                datos.getId_encuesta(),
+                datos.getTipo(),
+                datos.getContenido()
+                
+                
+                );
+        
+                      
+        
+        return res;
+    }
+
+    private static Pregunta parseRespuesta(HashMap<String, Object> datos) {
+        Pregunta res = null;
+        
+        Long consecutivo = (long) datos.get("consecutio");
+        Long id_encuesta= (long) datos.get("id_encuesta");
+        String tipo= (String) datos.get("tipo");
+        String contenido= (String) datos.get("contenido");
+//        LinkedList banco= (LinkedList) datos.get("banco_respuestas");
+//        LinkedList respuestas_correctas = (LinkedList) datos.get("respuestas_correctas");
+      
+        
+        res = new Pregunta(consecutivo,id_encuesta,tipo,contenido);
+                
         return res;
     }
     
