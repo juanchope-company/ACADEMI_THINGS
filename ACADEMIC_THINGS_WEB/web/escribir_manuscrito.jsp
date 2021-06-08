@@ -14,13 +14,33 @@
     </head>
     <body>
         <form method="post">
+<%
+    Sesion sesion_actual = null;
+    Manuscrito manuscrito = null;
+    
+    try {
+        sesion_actual = (Sesion) session.getAttribute("sesion");
+        encuestaWeb = (PQR) session.getAttribute("encuesta");
+        if (sesion_actual == null)
+            sesion_actual = new Sesion();
+        if (encuestaWeb == null)
+            encuestaWeb = new PQR(sesion_actual.getUsuario());
+    } catch (Exception e) {
+        sesion_actual = new Sesion();
+        encuestaWeb = new PQR(sesion_actual.getUsuario());
+    }
+    
+
+    session.setAttribute("encuesta", encuestaWeb);
+    session.setAttribute("sesion", sesion_actual);
+%>
             <h1>Bienvenidos a escribir manuscrito</h1>
             <label>Encabezado: </label>
-            <input class="form-control" type="text" placeholder="Encabezado" name="txt_encabezado">
+            <input value="<%= %>" class="form-control" type="text" placeholder="Encabezado" name="txt_encabezado">
             <label>Contenido: </label>
-            <input class="form-control" type="text" placeholder="Contenido" name="txt_contenido">
+            <input value="<%= %>" class="form-control" type="text" placeholder="Contenido" name="txt_contenido">
             <label>Archivo: </label>
-            <input class="form-control" type="file" placeholder="Archivo" name="txt_archivo">
+            <input value="<%= %>" class="form-control" type="file" placeholder="Archivo" name="txt_archivo">
             <button class="button" type="submit" name="btn_publicar_manuscrito">Publicar</button>
         <form>
 <%/*

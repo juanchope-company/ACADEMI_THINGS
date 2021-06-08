@@ -8,14 +8,18 @@ import java.util.LinkedList;
  * @author Juanchope
  */
 public class Encuesta {
+
+    public static boolean agregarEncuesta(Encuesta encuesta) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     private long 
-            id,
-            id_usuario;
+            id=-1,
+            id_usuario=-1;
     
     private String
-            titulo,
-            descripcion;
+            titulo="",
+            descripcion="";
     
     private LocalDate
             fecha_realizacon;
@@ -35,6 +39,8 @@ public class Encuesta {
     }
 
     public String getTitulo() {
+        if (titulo == null)
+            titulo = "";
         return titulo;
     }
 
@@ -43,6 +49,8 @@ public class Encuesta {
     }
 
     public String getDescripcion() {
+        if (descripcion == null)
+            descripcion = "";
         return descripcion;
     }
 

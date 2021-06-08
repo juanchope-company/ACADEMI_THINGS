@@ -14,13 +14,7 @@
         <title>Crear publicación</title>
     </head>
     <body>
-        <h1>Bienvenidos a publicaciones</h1>
-        <form method="post">
-            <label>Contenido: </label>
-            <input class="form-control" type="text" placeholder="Contenido" name="txt_contenido">
-            <button class="button" type="submit" name="btn_publicacion">Publicar</button>
-        </form>
-<%
+<%    
     Sesion sesion_actual = null;
     Publicacion publicacion = null;
     
@@ -35,10 +29,21 @@
         sesion_actual = new Sesion();
         publicacion = new Publicacion(sesion_actual.getUsuario());
     }
+    try {
+        publicacion.setContenido(request.getParameter("txt_contenido"));
+    } catch (Exception e) {
+    }
     
-    String contenido = null, res = null;
-    
-    contenido = request.getParameter("txt_contenido");
+    String contenido = publicacion.getContenido();
+%> 
+        <h1>Bienvenidos a publicaciones</h1>
+        <form method="post">
+            <label>Contenido: </label>
+            <input value="<%=contenido %>" class="form-control" type="text" placeholder="Contenido" name="txt_contenido">
+            <button class="button" type="submit" name="btn_publicacion">Publicar</button>
+        </form>
+<%    
+    String res = null;    
 
     if (request.getParameter("btn_publicacion") != null){
         publicacion.setContenido(contenido);

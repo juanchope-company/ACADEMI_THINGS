@@ -80,6 +80,8 @@ public class Publicacion {
     }
 
     public String getContenido() {
+        if (contenido == null)
+            contenido = "";
         return contenido;
     }
 

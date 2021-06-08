@@ -22,7 +22,11 @@ public class EncuestaWeb extends Interface_Encuesta{
 
     @Override
     public void agregarEncuesta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (Encuesta.agregarEncuesta(encuesta))
+            res = "Encuesta agregada sactisfactoriamente";
+        else
+            res = "Encuesta no agregada";
+            
     }
 
     @Override

@@ -55,6 +55,8 @@ public class Pregunta {
     }
 
     public String getContenido() {
+        if (contenido == null)
+            contenido = "";
         return contenido;
     }
 
