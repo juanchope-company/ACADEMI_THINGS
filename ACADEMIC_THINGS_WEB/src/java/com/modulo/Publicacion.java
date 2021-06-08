@@ -10,12 +10,12 @@ import java.time.LocalTime;
 public class Publicacion {
     
     private int 
-            id,
+            id = -1,
             votos_positivos = 0,
             votos_negativos = 0;
     
     private Long 
-            id_usuario;
+            id_usuario = -1L;
     
     private LocalDate
             fecha;
@@ -24,7 +24,7 @@ public class Publicacion {
             hora;
     
     private String
-            contenido;
+            contenido = "";
 
     public Publicacion(Usuario usuario) {
         this.id_usuario = usuario.getId();
