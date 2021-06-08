@@ -200,3 +200,235 @@ footer p {
 .form-reg-1 {
     width: 33%;
 }
+
+header form{
+    display: inline-block;
+    margin: auto;
+    position: relative;
+    width: 40%;
+    bottom:0.5vh;
+    padding-left: 25vh;
+    padding-right: 20vh;
+}
+
+.bar_busqueda {
+    display: inline-block;
+    width: 80%;
+    padding-top: 1vh;
+    border-radius: 5px;
+    border:none;
+    outline: none;
+    padding-left: 1vh;
+    padding-bottom: 1vh;
+}
+
+.bar_busqueda::placeholder {
+    color: #18191A;
+}
+
+.lupa {
+    display: inline-block;
+    position: relative;
+    right: 4vh;
+    background-color: #8c52ff;
+    padding-top: 0.9vh;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border:none;
+    width: 5vh;
+    padding-bottom: 0.9vh;
+}
+
+.lupa:hover {
+    background-color: #5e17eb;
+}
+
+.nav_panel {
+    margin-top: 5px;
+    display: inline-block;
+    position: absolute;
+    width: 150px;
+    background-color: #f5f5f5;
+    right: 5%;
+    padding: 1vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    border-radius: 5px;
+}
+
+.nav_panel label {
+    text-align: center;
+    color: #18191A;
+    margin-right:2vh ; 
+    font-size: 15px;
+}
+
+.nav_panel button {
+    background-color: transparent;
+    color: #18191A;
+    width: 40%;
+    height: 100%;
+    font-size: 15px;
+    border: 0px;
+    position: absolute;
+    top:0px;
+    right: 0px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.nav_panel button:hover {
+    background-color: #8c52ff;
+    font-weight: bold;
+    color:white;
+}
+
+.panel_principal {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.lista-opciones {
+    width: 22%;
+    box-shadow: 0px 3px 10px #18191A;
+    padding-top: 6vh;
+    height: 106%;
+}
+
+.lista-opciones h3 {
+    margin-bottom: 5vh;
+    margin-left: 8vh;
+}
+
+.contenedor-vualizacion {
+    width: 70%;
+    padding: 5vh;
+    height: 100%;
+}
+
+.link {
+    text-decoration: none;
+    color: #18191A;
+   
+}
+
+.link:hover {
+    color: white;
+     font-weight: bold;
+}
+
+
+
+.li_op {
+    position: relative;
+    width: 80%;
+    color:#18191A;
+    padding-left: 10vh;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    list-style: none;
+}
+
+.li_op:hover {
+    background-color: #8c52ff;
+    color:white;
+     font-weight: bold;
+}
+
+.container h1 {
+    margin-bottom: 4vh;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.formulario label {
+    display: block;
+    font-size: 3vh;
+}
+
+::placeholder {
+    color: #18191A;
+}
+
+.formulario .button {
+    position: relative;
+    width: 92%;
+    background-color: rgb(19, 19, 19);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    font-family: verdana;
+    text-align: center;
+    border: 0px;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.formulario .button:hover {
+    border:  1px solid #5e17eb;
+}
+
+.formulario input{
+    margin-top: 8px;
+    width: 90%;
+    color: #e9e9e9;
+    padding: 8px;
+    background-color: #C2A3FF;
+    border-radius: 5px;
+    border: 0px solid;
+    margin-bottom: 3vh;
+}
+
+.long-text {
+     margin-top: 8px;
+    width: 90%;
+    color: #e9e9e9;
+    padding: 8px;
+    background-color: #C2A3FF;
+    border-radius: 5px;
+    border: 0px solid;
+    margin-bottom: 3vh;
+}
+
+.head-encuesta {
+    margin-bottom: 8vh;
+}
+
+.cont-1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.part-div {
+    margin-left: 4vh;
+    width: 75%;
+}
+
+.part-id {
+    width: 20%;
+}
+
+.formulario .buttonPrincipal {
+    background-color: #8c52ff;
+    position: relative;
+    width: 92%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    font-family: verdana;
+    text-align: center;
+    border: 0px;
+    align-items: center;
+    margin-bottom: 2vh;
+}
