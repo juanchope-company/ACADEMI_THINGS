@@ -10,7 +10,8 @@ import java.util.LinkedList;
 public class Encuesta {
     
     private long 
-            id;
+            id,
+            id_usuario;
     
     private String
             titulo,
@@ -23,7 +24,11 @@ public class Encuesta {
             contesta;
 
     private LinkedList<Pregunta> 
-            las_Preguntas;
+            las_Preguntas = new LinkedList<>();
+
+    public Encuesta() {
+        las_Preguntas.add(new Pregunta());
+    }
     
     public long getId() {
         return id;
@@ -68,6 +73,14 @@ public class Encuesta {
     public void setLas_Preguntas(LinkedList<Pregunta> las_Preguntas) {
         this.las_Preguntas = las_Preguntas;
     }
+
+    public long getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(long id_usuario) {
+        this.id_usuario = id_usuario;
+    }
     
     public static Encuesta selecionarEncuesta(Encuesta datos){
         Encuesta res = null;
@@ -77,6 +90,15 @@ public class Encuesta {
         return res;
     }
     
-    
+    public static boolean crearEncuesta (Encuesta encuesta){
+        String sentencia = "INSERT INTO ENCUESTA (titulo,descripcion,contesta,id_usuario) VALUES (?,?,?,?)";
+        return Conexion.ejecutarConsulta(
+                sentencia,
+                encuesta.getTitulo(),
+                encuesta.getDescripcion(),
+                encuesta.isContesta(),
+                encuesta.getId_usuario()
+        );
+    }
     
 }

@@ -9,19 +9,19 @@ import com.modulo.Usuario;
  */
 public class Sesion extends Interface_Sesion{
     
-    private String res;
     private Usuario usuario;
     
     public Sesion(){
         super(null, null);
     }
     
-    public Sesion(String nombre_usuario, String contrasenna) {
-        super(nombre_usuario, contrasenna);
+    public Sesion(Usuario usu){
+        super(null, null);
+        usuario = usu;
     }
     
-    public String respuesta(){
-        return res;
+    public Sesion(String nombre_usuario, String contrasenna) {
+        super(nombre_usuario, contrasenna);
     }
     
     public boolean esSesionValida(){
@@ -39,7 +39,26 @@ public class Sesion extends Interface_Sesion{
 
     @Override
     public void cerraSesion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        usuario = null;
+        res = "Sesión cerrada";
     }
-    
+
+    @Override
+    public void crearUsuario() {        
+        if (usuario != null){
+            res = usuario.validarCamposUsuario();
+
+            if (res != null)
+                return;
+            
+            if (Usuario.agregarUsuario(usuario))
+                res = "El usuario fué agregado sactisfactoriamente.";
+            else
+                res = "El usuario no fué agregado";
+        }
+    }    
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
 }

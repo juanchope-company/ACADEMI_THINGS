@@ -1,5 +1,6 @@
 package com.controlador;
 
+import com.modulo.Encuesta;
 import com.modulo.Usuario;
 
 /**
@@ -9,7 +10,17 @@ import com.modulo.Usuario;
 
 public abstract class Interface_Encuesta {
     
-    private Usuario usuario;
+    private final Usuario usuario;
+    protected Encuesta encuesta = new Encuesta();
+    protected String res;
+
+    public Interface_Encuesta(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    public String respuesta(){
+        return res;
+    }    
     
     public abstract void crearEncuesta();
     

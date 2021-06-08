@@ -14,17 +14,21 @@ public class Pregunta {
             id_encuesta;
     
     private String
-            tipo,
-            contenido;
+            tipo = "",
+            contenido = "";
     
     private LinkedList<String>
-            banco_respuestas;
+            banco_respuestas = new LinkedList<>();
     
     private LinkedList<Integer>
-            respuestas_correctas;
+            respuestas_correctas = new LinkedList<>();
     
     private LinkedList<Respuesta>
-            las_respuestas;
+            las_respuestas = new LinkedList<>();
+
+    public Pregunta() {
+        banco_respuestas.add("");
+    }
 
     public Long getConsecutivo() {
         return consecutivo;
@@ -90,4 +94,14 @@ public class Pregunta {
         return res;
     }
     
+    public static boolean agregarPregunta (Pregunta pregunta){
+        String sentencia = "INSERT INT PREGUNTA (id_encuesta,tipo,contenido,banco_respuestas,respuestas_correctas) VALUES (?,?,?,?)";
+        return Conexion.ejecutarConsulta(
+                sentencia,
+                pregunta.getId_encuesta(),
+                pregunta.getContenido(),
+                pregunta.getBanco_respuestas(),
+                pregunta.getRespuestas_correctas()
+        );
+    }    
 }
