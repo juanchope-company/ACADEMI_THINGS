@@ -12,6 +12,9 @@ import java.util.LinkedList;
  */
 public class Respuesta {
 
+    public Respuesta() {
+    }
+
     public Respuesta(Long id, Long consecutivo_Pregunta, int respuesta_Cerrada, String respuesta_Abierta) {
         this.id = id;
         this.consecutivo_Pregunta = consecutivo_Pregunta;

@@ -9,14 +9,12 @@ import com.modulo.Usuario;
  */
 public class Sesion extends Interface_Sesion{
     
-    private Usuario usuario;
-    
     public Sesion(){
         super(null, null);
     }
     
     public Sesion(Usuario usu){
-        super(null, null);
+        super(usu.getNombre_usuario(), usu.getContrasenna());
         usuario = usu;
     }
     
@@ -33,8 +31,15 @@ public class Sesion extends Interface_Sesion{
    
     @Override
     public void iniciarSesion() {
-        usuario = new Usuario(nombre_usuario, contrasenna);
-        res = "bienvenido";
+        try {
+            usuario = Usuario.seleccionarUsuario(usuario);
+            if (usuario != null){
+                res = "bienvenido";
+            }
+        } catch (Exception e) {
+            res = "falló";
+        }
+        res = "Usuario no registrado";
     }
 
     @Override

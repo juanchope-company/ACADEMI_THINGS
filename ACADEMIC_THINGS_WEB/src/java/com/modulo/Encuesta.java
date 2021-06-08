@@ -8,10 +8,6 @@ import java.util.LinkedList;
  * @author Juanchope
  */
 public class Encuesta {
-
-    public static boolean agregarEncuesta(Encuesta encuesta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     private long 
             id=-1,
@@ -97,16 +93,22 @@ public class Encuesta {
         
         return res;
     }
-    
-    public static boolean crearEncuesta (Encuesta encuesta){
-        String sentencia = "INSERT INTO ENCUESTA (titulo,descripcion,contesta,id_usuario) VALUES (?,?,?,?)";
+
+    public static boolean agregarEncuesta(Encuesta encuesta) {
+        String sentencia = "INSERT INTO `academicthings`.`encuesta`\n" +
+                "(`titulo`,\n" +
+                "`fecha_realizacion`,\n" +
+                "`descripcion`,\n" +
+                "`contesta`,\n" +
+                "`id_usuario`)\n" +
+                "VALUES\n(?,?,?,?,?)\n";
         return Conexion.ejecutarConsulta(
                 sentencia,
                 encuesta.getTitulo(),
+                encuesta.getFecha_realizacon(),
                 encuesta.getDescripcion(),
-                encuesta.isContesta(),
+                encuesta.isContesta() ? "si" : "no",
                 encuesta.getId_usuario()
         );
-    }
-    
+    } 
 }

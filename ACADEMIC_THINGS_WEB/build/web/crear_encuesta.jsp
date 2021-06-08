@@ -53,7 +53,7 @@
             <label>Titulo: </label>
             <input value="<%=titulo %>" name='txt_titulo' type="text" placeholder="Ingrese el titulo de la encuesta"/>
             <label>Descripción: </label>
-            <input value="<%=descrpcion %>" name='txt_descripción' type="text" placeholder="Ingrese la descripción de la encuesta"/>
+            <input value="<%=descrpcion %>" name='txt_descripcion' type="text" placeholder="Ingrese la descripción de la encuesta"/>
             <ul>
 <%
     if (request.getParameter("btn_agr_encuesta") != null)
@@ -64,7 +64,7 @@
             preguntas.get(i).getBanco_respuestas().add("");         
         
         try {
-            preguntas.get(i).setContenido(request.getParameterValues("txt_contenido")[i]);
+            preguntas.get(i).setContenido(request.getParameter("txt_contenido"+i));
             preguntas.get(i).setTipo(request.getParameter("ch_cerrada"+i) != null ? "cerrada" : "abierta");
         } catch (Exception e) {
         }
@@ -82,7 +82,7 @@
                 <label>Id: </label>
                 <input type="text" value='<%=i+1 %>' disabled/>
                 <label>Contenido: </label>
-                <input value="<%=contenido %>" name='txt_contenido' type="text" value='<%=preguntas.get(i).getContenido() %>'/>
+                <input value="<%=contenido %>" name='txt_contenido<%=i %>' type="text" value='<%=preguntas.get(i).getContenido() %>'/>
                 <label>Tipo: ¿Respuesta cerrada?</label>
 <%
         if ( tipo.equals("cerrada")){

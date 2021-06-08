@@ -15,9 +15,9 @@ CREATE TABLE USUARIO (
 	universidad VARCHAR (60) NOT NULL,
 	descripcion_perfil VARCHAR (500) NOT NULL,
 	fecha_nacimiento DATE NOT NULL,
-	numero_celular INT NOT NULL,
+	numero_celular varchar(15) NOT NULL,
 	foto_perfil BLOB,
-	contraseña VARCHAR (20) NOT NULL
+	contrasenna VARCHAR (20) NOT NULL
 );
 
 #PUBLICACIÓN 

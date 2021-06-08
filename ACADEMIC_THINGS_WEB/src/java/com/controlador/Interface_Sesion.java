@@ -1,5 +1,7 @@
 package com.controlador;
 
+import com.modulo.Usuario;
+
 /**
  *
  * @author Juanchope
@@ -12,11 +14,14 @@ public abstract class Interface_Sesion {
             nombre_usuario,
             contrasenna;
     
+    protected Usuario usuario;
+    
     protected String res;
 
     public Interface_Sesion(String nombre_usuario, String contrasenna) {
         this.nombre_usuario = nombre_usuario;
-        this.contrasenna = contrasenna;
+        this.contrasenna = contrasenna;  
+        usuario = new Usuario(nombre_usuario, contrasenna);
     }
     
     public String respuesta(){

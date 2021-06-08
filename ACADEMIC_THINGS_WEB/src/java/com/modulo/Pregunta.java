@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * 
  */
 public class Pregunta {
-
+    
     public Pregunta(Long consecutivo, Long id_encuesta, String tipo, String contenido, LinkedList<String> banco_respuestas, LinkedList<Integer> respuestas_correctas, LinkedList<Respuesta> las_respuestas) {
         this.consecutivo = consecutivo;
         this.id_encuesta = id_encuesta;
@@ -25,30 +25,27 @@ public class Pregunta {
         this.id_encuesta = id_encuesta;
         this.tipo = tipo;
         this.contenido = contenido;
-    }
-    
-    
-    
+    } 
     
     private Long
-            consecutivo,
-            id_encuesta;
+            consecutivo = -1L,
+            id_encuesta = -1L;
     
     private String
-            tipo,
-            contenido;
+            tipo = "",
+            contenido = "";
     
     private LinkedList<String>
-            banco_respuestas;
+            banco_respuestas = new LinkedList<>();
     
     private LinkedList<Integer>
-            respuestas_correctas;
+            respuestas_correctas = new LinkedList<>();
     
     private LinkedList<Respuesta>
-            las_respuestas;
+            las_respuestas = new LinkedList<>();
 
-    Pregunta() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Pregunta() {
+        las_respuestas.add(new Respuesta());
     }
 
     public Long getConsecutivo() {
@@ -76,6 +73,8 @@ public class Pregunta {
     }
 
     public String getContenido() {
+        if (contenido == null)
+            contenido = "";
         return contenido;
     }
 

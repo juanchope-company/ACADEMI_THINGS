@@ -204,13 +204,13 @@ public class Usuario {
         Usuario res = null;
         
         Long id = (long) datos.get("id");
-        String nombre_completo = (String) datos.get("nombre_completo");
+        String nombre_completo = (String) datos.get("nombre");
         String nombre_usuario = (String) datos.get("nombre_usuario");
         String correo_electronico = (String) datos.get("correo_electronico");
         String genero = (String) datos.get("genero");
         String profesion = (String) datos.get("profesion");
         String universidad = (String) datos.get("universidad");
-        String descripcion_de_perfil = (String) datos.get("descripcion_de_perfil");
+        String descripcion_de_perfil = (String) datos.get("descripcion_perfil");
         String numero_celular = (String) datos.get("numero_celular");
         String contrasenna = (String) datos.get("contrasenna");
         LocalDate fecha_nacimiento = new Date(((Date) datos.get("fecha_nacimiento")).getTime()).toLocalDate();
@@ -222,11 +222,12 @@ public class Usuario {
     }
 
     public static boolean agregarUsuario(Usuario usuario){
-        String sentencia = "INSERT INTO USUARIO (nombre_completo,nombre_usuario,correo_electronico,genero,profesion,universidad,descipcion_de_perfil,"
-                + "numero_celular,contrasenna,fecha_nacimiento,foto_perfil) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        String sentencia = " INSERT INTO usuario  (id,nombre,nombre_usuario,correo_electronico,genero,profesion,universidad,descripcion_perfil,fecha_nacimiento,numero_celular,foto_perfil, contrasenna) VALUES "
+                + "(?,?,?,?,?,?,?,?,?,?,?,?)";
         
         return Conexion.ejecutarConsulta(
                 sentencia,
+                usuario.getId(),
                 usuario.getNombre_completo(),
                 usuario.getNombre_usuario(),
                 usuario.getCorreo_electronico(),
@@ -234,12 +235,16 @@ public class Usuario {
                 usuario.getProfesion(),
                 usuario.getUniversidad(),
                 usuario.getDescripcion_de_perfil(),
-                usuario.getNumero_celular(),
-                usuario.getContrasenna(),
                 usuario.getFecha_nacimiento(),
-                usuario.getFoto_perfil()
+                usuario.getNumero_celular(),
+                usuario.getFoto_perfil(),
+                usuario.getContrasenna()
         ); 
         
     }   
+
+    public String validarCamposUsuario() {
+        return null;
+    }
     
 }
