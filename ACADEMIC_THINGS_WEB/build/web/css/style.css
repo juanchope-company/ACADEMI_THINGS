@@ -165,6 +165,17 @@ footer p {
     margin-bottom: 3vh;
 }
 
+.form-control2 {
+    margin-top: 8px;
+    width: 90%;
+    color: black;
+    padding: 10px;
+    background-color: #8c52ff;
+    border-radius: 5px;
+    border: 0px solid;
+    margin-bottom: 3vh;
+}
+
 .form-control:focus {
     background-color: #8c52ff;
     border: 1px solid black;
