@@ -17,7 +17,7 @@ CREATE TABLE USUARIO (
 	fecha_nacimiento DATE NOT NULL,
 	numero_celular INT NOT NULL,
 	foto_perfil BLOB,
-	contraseña VARCHAR (20) NOT NULL
+	contrasenna VARCHAR (20) NOT NULL
 );
 
 #PUBLICACIÓN 
