@@ -51,19 +51,12 @@
     String descrpcion  = encuesta.getDescripcion();
     
 %>
-<<<<<<< HEAD
-            <label>Titulo: </label>
-            <input value="<%=titulo %>" name='txt_titulo' type="text" placeholder="Ingrese el titulo de la encuesta"/>
-            <label>Descripción: </label>
-            <input value="<%=descrpcion %>" name='txt_descripcion' type="text" placeholder="Ingrese la descripción de la encuesta"/>
-=======
             <div class="head-encuesta">
                         <label>Titulo: </label>
                         <input value="<%=titulo %>" name='txt_titulo' type="text" placeholder="Ingrese el titulo de la encuesta"/>
                         <label>Descripción: </label>
                         <textarea class="long-text" value="<%=descrpcion %>" name='txt_descripción' type="text" placeholder="Ingrese la descripción de la encuesta"></textarea>
             </div>
->>>>>>> Diseño
             <ul>
 <%
     if (request.getParameter("btn_agr_encuesta") != null)
