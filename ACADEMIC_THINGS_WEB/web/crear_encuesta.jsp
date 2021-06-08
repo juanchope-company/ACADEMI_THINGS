@@ -21,6 +21,7 @@
     <body>
         <div class="container">
         <h1>Crear encuesta</h1>
+        <div class="formulario">
         <form method="post">
 <%
     Sesion sesion_actual = null;
@@ -50,10 +51,12 @@
     String descrpcion  = encuesta.getDescripcion();
     
 %>
-            <label>Titulo: </label>
-            <input value="<%=titulo %>" name='txt_titulo' type="text" placeholder="Ingrese el titulo de la encuesta"/>
-            <label>Descripción: </label>
-            <input value="<%=descrpcion %>" name='txt_descripción' type="text" placeholder="Ingrese la descripción de la encuesta"/>
+            <div class="head-encuesta">
+                        <label>Titulo: </label>
+                        <input value="<%=titulo %>" name='txt_titulo' type="text" placeholder="Ingrese el titulo de la encuesta"/>
+                        <label>Descripción: </label>
+                        <textarea class="long-text" value="<%=descrpcion %>" name='txt_descripción' type="text" placeholder="Ingrese la descripción de la encuesta"></textarea>
+            </div>
             <ul>
 <%
     if (request.getParameter("btn_agr_encuesta") != null)
@@ -79,10 +82,16 @@
         String tipo = preguntas.get(i).getTipo();
 %>
             <li>
-                <label>Id: </label>
-                <input type="text" value='<%=i+1 %>' disabled/>
-                <label>Contenido: </label>
-                <input value="<%=contenido %>" name='txt_contenido' type="text" value='<%=preguntas.get(i).getContenido() %>'/>
+                <div class="cont-1">
+                    <div class="part-id">
+                    <label>Id: </label>
+                    <input type="text" value='<%=i+1 %>' disabled/>
+                    </div>
+                    <div class="part-div">
+                    <label>Contenido: </label>
+                    <input value="<%=contenido %>" name='txt_contenido' type="text" value='<%=preguntas.get(i).getContenido() %>'/>
+                    </div>
+                </div>
                 <label>Tipo: ¿Respuesta cerrada?</label>
 <%
         if ( tipo.equals("cerrada")){
@@ -125,6 +134,7 @@
                 </lu>
             <button class="buttonPrincipal" type="submit" name="btn_guardar_encuesta">Guardar encuesta</button>
         </form>
+        </div>
         </div>
     </body>
 </html>
