@@ -451,3 +451,39 @@ header form{
     align-items: center;
     margin-bottom: 2vh;
 }
+
+.cont_publicacion {
+    margin-top: 8px;
+    width: 90%;
+    height: 20vh;
+    background-color: #e9e9e9;
+    border-radius: 10px;
+    color: #18191A;
+    padding: 8px;
+    border: 0.5px solid gray;
+    margin-bottom: 3vh;
+}
+
+.buttonPublicacion {
+    width: 20vh;
+    text-align: center;
+    background-color: #C2A3FF;
+    color:black;
+    position: absolute;
+    right: 18vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    bottom: 5vh;
+    border:none;
+    border-radius: 5px;
+}
+
+.buttonPublicacion:hover {
+    background-color: #5e17eb;
+    color:white;
+}
+
+.publicacion {
+    position: relative;
+    width: 100%;
+}

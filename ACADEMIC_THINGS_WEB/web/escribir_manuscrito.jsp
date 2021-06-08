@@ -12,8 +12,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Escribir manuscrito</title>
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+        <div class="formulario">
         <form method="post">
 <%
     Sesion sesion_actual = null;
@@ -51,18 +53,22 @@
     String contenido = manuscrito.getContenido();
     byte[] archivo = manuscrito.getArchivo();
 %>
+        <div class="head-encuesta">
             <h1>Bienvenidos a escribir manuscrito</h1>
+        </div>
+        
             <label>Encabezado: </label>
-            <input value="<%=encabezado %>" class="form-control" type="text" placeholder="Encabezado" name="txt_encabezado">
+            <input value="<%=encabezado %>" type="text" placeholder="Encabezado" name="txt_encabezado">
             <label>Contenido: </label>
-            <input value="<%=contenido %>" class="form-control" type="text" placeholder="Contenido" name="txt_contenido">
+            <textarea class="long-text" value="<%=contenido %>" type="text" placeholder="Contenido" name="txt_contenido"  ></textarea>
             <label>Archivo: </label>
-            <input value="<%=archivo %>" class="form-control" type="file" placeholder="Archivo" name="txt_archivo">
+            <input value="<%=archivo %>" type="file" placeholder="Archivo" name="txt_archivo">
             <button class="button" type="submit" name="btn_publicar_manuscrito">Publicar</button>
 <%
     session.setAttribute("encuesta", manuscrito);
     session.setAttribute("sesion", sesion_actual);
 %>
-        <form>
+        </form>
+      </div>
     </body>
 </html>
