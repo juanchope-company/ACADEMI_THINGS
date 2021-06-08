@@ -54,7 +54,7 @@ header h2 {
 footer {
     width: 100%;
     position: absolute;
-    bottom: 0pc;
+    bottom: 0px;
     height: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -142,6 +142,17 @@ footer p {
     color: black;
     padding: 10px;
     background-color: #5e17eb;
+    border-radius: 5px;
+    border: 0px solid;
+    margin-bottom: 3vh;
+}
+
+.form-control2 {
+    margin-top: 8px;
+    width: 90%;
+    color: black;
+    padding: 10px;
+    background-color: #8c52ff;
     border-radius: 5px;
     border: 0px solid;
     margin-bottom: 3vh;
