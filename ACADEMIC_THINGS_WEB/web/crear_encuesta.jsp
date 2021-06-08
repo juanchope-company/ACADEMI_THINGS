@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+        <div class="container">
         <h1>Crear encuesta</h1>
         <form method="post">
 <%
@@ -96,13 +97,13 @@
                         + (j+1) + "' value='" + preguntas.get(i).getBanco_respuestas().get(j) + "'/>");
                 out.print("</li>");
             }
-            out.print("</ul><button type='submit' name='btn_agr_respuesta" + i + "'>Agregar nueva respuesta</button>");
+            out.print("</ul><button class='button' type='submit' name='btn_agr_respuesta" + i + "'>Agregar nueva respuesta</button>");
         }
         out.print("\t\t\t</li>");
     }
 
     
-    out.print("<button type='submit' name='btn_agr_encuesta'>Agregar nueva pregunta</button>");
+    out.print("<button class='button' type='submit' name='btn_agr_encuesta'>Agregar nueva pregunta</button>");
     
     encuesta.setLas_Preguntas(preguntas);
     encuestaWeb.setEncuesta(encuesta);
@@ -121,8 +122,9 @@
     session.setAttribute("encuesta", encuestaWeb);
     session.setAttribute("sesion", sesion_actual);
 %>
-            </lu>
-            <button type="submit" name="btn_guardar_encuesta">Guardar encuesta</button>
+                </lu>
+            <button class="buttonPrincipal" type="submit" name="btn_guardar_encuesta">Guardar encuesta</button>
         </form>
+        </div>
     </body>
 </html>

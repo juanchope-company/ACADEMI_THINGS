@@ -59,14 +59,12 @@
                             </div>
                         </div>
                         <button class="button" name="btn_registrar" type='submit'>Guardar registro</button>
-                        <button class="button" name="btn_atras" type="submit">Atras</button>
+                        <button class="reg" name="btn_atras" type="submit">Atras</button>
                     </form>
                 </div>
             </div>
         </div>
-        <footer>
-            <p>Proyecto base de datos, creado por: </p>
-        </footer>
+        
 <%
     Sesion sesion_actual = null;
     
@@ -134,6 +132,10 @@
     }
     
     session.setAttribute("sesion", sesion_actual);
-%>
+%>   
+        <footer>
+            <p>Proyecto base de datos, creado por: </p>
+        </footer>
+
     </body>
 </html>
