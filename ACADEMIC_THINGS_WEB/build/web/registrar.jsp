@@ -63,6 +63,8 @@
         descripcion_perfil ="";
     if (fecha_nacimientoStr == null)
         fecha_nacimientoStr ="";
+    if (numero_celular == null)
+        numero_celular ="";
     if (contrasenna1 == null)
         contrasenna1 ="";
     if (contrasenna2 == null)

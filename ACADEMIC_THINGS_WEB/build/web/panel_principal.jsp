@@ -47,8 +47,8 @@
         <header>
             <h1>Academic</h1><h2>Things</h2>
             <form method="get">
-                <input class="bar_busqueda" type="text" placeholder="Barra de busqueda">
-                <button class="lupa">🔎</button>
+                <input name="txt_busqueda" class="bar_busqueda" type="text" placeholder="Barra de busqueda">
+                <button name="btn_busqueda" type="submit" class="lupa">🔎</button>
             </form>
             <nav class="nav_panel">
             <label><%=nombre_usu %> ::</label>
@@ -72,6 +72,9 @@
 <%
     String aux = request.getParameter("res"), 
             ruta = "";
+    
+    if (request.getParameter("btn_busqueda")!= null)
+        aux = request.getParameter("txt_busqueda");
     
     if (aux != null){
         switch (aux){
@@ -106,7 +109,7 @@
                 ruta = "comentar_publicacion.jsp";
                 break;
             default:
-                ruta = "";
+                ruta = "ver_publicacion.jsp?tematica=" + aux;
         }
     }
     

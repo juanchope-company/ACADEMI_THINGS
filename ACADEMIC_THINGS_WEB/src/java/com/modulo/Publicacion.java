@@ -1,7 +1,11 @@
 package com.modulo;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 /**
  *
@@ -97,10 +101,55 @@ public class Publicacion {
         this.id_usuario = id_usuario;
     }  
     
+    public static LinkedList<Publicacion> seleccionarPublicacionesPorTematica(String tematica){
+        LinkedList<Publicacion> res = new LinkedList<>();
+        
+        String sentencia = "SELECT * from publicacion "
+                + "inner join etiqueta on etiqueta.id_publicacion =publicacion.id  "
+                + "inner join tematica on tematica.id=etiqueta.id_tematica "
+                + "where tematica.nombre  LIKE '%" + tematica + "%'";
+        
+        LinkedList<HashMap<String, Object>> aux = Conexion.consultarFilas(
+                sentencia
+        );
+        
+        if (aux != null)
+            for (HashMap<String, Object> aux2 : aux)
+                res.add(parsePublicacion(aux2)); 
+        
+        return res;
+    }
+    
+    public static LinkedList<Publicacion> seleccionarPublicaciones(){
+        LinkedList<Publicacion> res = new LinkedList<>();
+        
+        String sentencia = "SELECT * from publicacion ";
+        
+        LinkedList<HashMap<String, Object>> aux = Conexion.consultarFilas(
+                sentencia
+        );
+        
+        if (aux != null)
+            for (HashMap<String, Object> aux2 : aux)
+                res.add(parsePublicacion(aux2)); 
+        
+        return res;
+    }
+    
     public static Publicacion selecionarPublicacion(Publicacion datos){
         Publicacion res = null;
         
-        /*Proceso*/
+        String sentencia = "Select * from publicacion\n"
+                + "\tWHERE id = ?";
+        
+        LinkedList<HashMap<String, Object>> aux = Conexion.consultarFilas(
+                sentencia,
+                datos.getId()
+        );
+        
+        if (aux != null)
+            if (aux.size() > 0)
+                res = parsePublicacion(aux.getLast());                
         
         return res;
     }
@@ -126,6 +175,51 @@ public class Publicacion {
     }
     
     public String validarPublicacion(){
-        return null;
+        String res = null;        
+        
+        if (Usuario.seleccionarUsuario(new Usuario(id_usuario)) == null){
+            res = "Porfavor selecione un usuario valido";
+        }else if (getContenido().length() < 10){
+            res = "El contenido de la publicación debe tener al menos 10 caracteres";
+        }
+
+        return res;
+    }
+    
+    
+    private static Publicacion parsePublicacion(HashMap<String, Object> datos) {
+        Publicacion res = null;
+        
+        try {            
+            int 
+                votos_positivos = (int) Long.parseLong(datos.get("votos_positivos").toString()),
+                votos_negativos = (int) Long.parseLong(datos.get("votos_negativos").toString());
+
+            Long 
+                id = (Long) datos.get("id"),
+                id_usuario =  (long) datos.get("id_usuario");
+
+            String
+                contenido = (String) datos.get("contenido"),
+                fechaStr = ((Date) datos.get("fecha")).toString(),
+                horaStr = ((Time) datos.get("hora")).toString();
+
+            String[] 
+                fechaArray = fechaStr.split("-"),
+                horaArray = horaStr.split(":");
+
+            LocalDate
+                fecha = LocalDate.of(Integer.parseInt(fechaArray[0]), Integer.parseInt(fechaArray[1]), Integer.parseInt(fechaArray[2]));
+
+            LocalTime
+                hora =  LocalTime.of(Integer.parseInt(horaArray[0]), Integer.parseInt(horaArray[1]));
+
+            int idf = Integer.parseInt(id.toString());
+            res = new Publicacion(idf,votos_positivos, votos_negativos, fecha, hora, contenido);
+            
+        } catch (Exception e) {
+        }
+                
+        return res;
     }
 }

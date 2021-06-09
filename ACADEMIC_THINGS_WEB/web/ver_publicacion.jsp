@@ -5,6 +5,7 @@
     Author     : Desarollo
 --%>
 
+<%@page import="java.util.LinkedList"%>
 <%@page import="java.time.LocalTime"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="com.modulo.Publicacion"%>
@@ -22,9 +23,14 @@
     <body>
 <%
     Sesion sesion_actual = null;
-    Publicacion publicacion = null;
+    LinkedList<Publicacion> publicaciones = null;
     
     try {
+        if (request.getParameter("tematica") != null)
+            publicaciones = Publicacion.seleccionarPublicacionesPorTematica(request.getParameter("tematica"));
+        else
+            publicaciones = Publicacion.seleccionarPublicaciones();
+            
         sesion_actual = (Sesion) session.getAttribute("sesion");
         if (sesion_actual == null)
             sesion_actual = new Sesion();
@@ -32,46 +38,46 @@
         sesion_actual = new Sesion();
     }
     
-    try {
-        publicacion = (Publicacion) session.getAttribute("encuesta");
-        if (publicacion == null)
-            publicacion = new Publicacion(sesion_actual.getUsuario());
-    } catch (Exception e) {
-        try {
-            publicacion = new Publicacion(sesion_actual.getUsuario());
-        } catch (Exception ex) {
-            response.sendRedirect("ver_publicacion.jsp");
-            return;
-        }
+    String res = "";
+    
+    if (publicaciones == null){
+        publicaciones = new LinkedList<>();
+    }else if (publicaciones.get(0) == null){
+        publicaciones = new LinkedList<>();
     }
     
-    int id = publicacion.getId();
-    LocalDate fecha = null;
-    String fechaStr= "";
-    try {
-        fecha = publicacion.getFecha();
-        fechaStr = fecha.getYear() +"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth();
-    } catch (Exception e) {
+    if (publicaciones.size() == 0){
+        res = "<br><h3>No hay publicaciones que coincidan con esa tematica</h3>";
     }
-    String horaStr = "";
-    LocalTime hora = null;
-    try {
-        hora = publicacion.getHora();
-        horaStr = hora.getHour() + ":" + hora.getMinute();
-    } catch (Exception e) {
-    }
-    String contenido = publicacion.getContenido();
-    int votos_p = publicacion.getVotos_positivos();
-    int votos_n = publicacion.getVotos_negativos();    
-
-    session.setAttribute("encuesta", publicacion);
-    session.setAttribute("sesion", sesion_actual);
 %>
         <div class="formulario">
-            <form method="post">
+            <form method="get">
                 <div class="head-encuesta">
                     <h1>Aquí puedes ver tus publicaciones</h1>
+                    <%=res %>
                 </div>
+<%
+    for (int i = 0; i < publicaciones.size(); i++) {
+        Publicacion publicacion = publicaciones.get(i);
+        int id = publicacion.getId();
+        LocalDate fecha = null;
+        String fechaStr= "";
+        try {
+            fecha = publicacion.getFecha();
+            fechaStr = fecha.getYear() +"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth();
+        } catch (Exception e) {
+        }
+        String horaStr = "";
+        LocalTime hora = null;
+        try {
+            hora = publicacion.getHora();
+            horaStr = hora.getHour() + ":" + hora.getMinute();
+        } catch (Exception e) {
+        }
+        String contenido = publicacion.getContenido();
+        int votos_p = publicacion.getVotos_positivos();
+        int votos_n = publicacion.getVotos_negativos();   
+%>
                 <label>Id: </label>
                 <input class="form-control" type="text" value="<%=id %>" placeholder="Id" name="txt_id" readonly>
                 <label>Fecha: </label>
@@ -84,6 +90,10 @@
                 <input class="form-control" type="text" value="<%=votos_p %>" placeholder="Votos positivos" name="txt_votos_p" readonly>
                 <label>Votos negativos </label>
                 <input class="form-control" type="text" value="<%=votos_n %>" placeholder="Votos negativos" name="txt_votos_n" readonly>
+<%
+        }
+    session.setAttribute("sesion", sesion_actual);
+%>
             </form>
         </div>
     </body>

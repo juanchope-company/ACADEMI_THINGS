@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.HashMap;
 import java.util.LinkedList;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,6 +34,10 @@ public class Usuario {
 
     public Usuario() {
     }
+    
+    public Usuario(Long id) {
+        this.id = id;
+    }    
 
     public Usuario(String nombre_usuario, String contrasenna) {
         this.nombre_usuario = nombre_usuario;
@@ -185,22 +188,31 @@ public class Usuario {
     public static Usuario seleccionarUsuario(Usuario datos){
         Usuario res = null;
         
-        String sentencia = "Select * from USUARIO\n"
+        String sentencia = "";
+        LinkedList<HashMap<String, Object>> aux;
+                
+        if (datos.getId() >= 0){
+            sentencia = "Select * from USUARIO\n"
+                + "\tWHERE id = ? ";
+            aux = Conexion.consultarFilas(
+                    sentencia, 
+                    datos.getId()
+            );
+        }else{
+            sentencia = "Select * from USUARIO\n"
                 + "\tWHERE nombre_usuario = ? AND contrasenna = ?";
-        
-        LinkedList<HashMap<String, Object>> aux = Conexion.consultarFilas(
-                sentencia, 
-                datos.getNombre_usuario(),
-                datos.getContrasenna()
-        );
-        
+            aux = Conexion.consultarFilas(
+                    sentencia, 
+                    datos.getNombre_usuario(),
+                    datos.getContrasenna()
+            );
+        }
         if (aux != null)
             if (aux.size() > 0)
                 res = parseUsuario(aux.getLast());                
         
         return res;
     }
-    
     
     private static Usuario parseUsuario(HashMap<String, Object> datos) {
         Usuario res = null;
